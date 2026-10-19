@@ -3,8 +3,8 @@
 <meta charset="UTF-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 <meta name="theme-color" content="#073b2b">    
-<meta name="description" content="賯購乇賾丕亍 - 賲賵賯毓 賱賱丕爻鬲賲丕毓 廿賱賶 丕賱賯乇丌賳 丕賱賰乇賷賲 賵賯乇丕亍丞 丌賷丕鬲賴">    
-<title>賯購乇賾丕亍 | QURAA</title>  <style>    
+<meta name="description" content="قُرّاء - موقع للاستماع إلى القرآن الكريم وقراءة آياته">    
+<title>قُرّاء | QURAA</title>  <style>    
 :root {    
   --green: #073b2b;    
   --green2: #0d513b;    
@@ -12,8 +12,8 @@
   --cream: #f8f4e9;    
   --text: #f8f4e9;    
   --muted: #c8d6cd;    
-}    {
-box-sizing: border-box;
+}    * {
+  box-sizing: border-box;
 }
 
 
@@ -275,7 +275,7 @@ padding: 14px;
 }
 }
 
-/* 賯丕乇卅 氐賮丨丕鬲 賲氐丨賮 丕賱賲丿賷賳丞 */
+/* قارئ صفحات مصحف المدينة */
 .mushaf-panel { text-align:center; }
 .page-toolbar { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; margin-bottom:12px; }
 .page-toolbar .page-jump { display:flex; align-items:center; gap:7px; justify-content:center; }
@@ -287,8 +287,10 @@ padding: 14px;
 .page-caption { color:var(--muted); line-height:1.9; margin-top:10px; font-size:14px; }
 @media(max-width:520px) { .page-toolbar { grid-template-columns:1fr 1fr; } .page-toolbar .page-jump { grid-column:1 / -1; grid-row:1; } .page-toolbar button { min-width:0; } }
 
-/* 毓乇囟 氐賵乇丞 丕賱賲氐丨賮 賮賯胤貨 廿禺賮丕亍 賯丕卅賲丞 丕賱丌賷丕鬲 丕賱賳氐賷丞 丕賱賲賰乇乇丞 丨鬲賶 賱丕 賷馗賳 丕賱賯丕乇卅 兀賳賴丕 氐賮丨丞 丕賱賲氐丨賮 */
-.layout .panel:nth-child(2) { display: none !important; }
+/* عرض صورة المصحف فقط؛ إخفاء قائمة الآيات النصية المكررة حتى لا يظن القارئ أنها صفحة المصحف */
+.layout .panel:nth-child(2) {
+  display: block !important;
+}
 .mushaf-panel { scroll-margin-top: 12px; }
 
 .archive-player-frame { width:100%; min-height:180px; border:1px solid var(--gold); border-radius:14px; background:#fff; }
@@ -300,85 +302,85 @@ padding: 14px;
 </style>  </head>  <body>  <header>
 
   <div class="logo">QURAA</div>    
-  <div style="color:var(--gold);font-size:23px;margin-top:5px">賯購乇賾丕亍</div>    
-  <div class="subtitle">乇賮賷賯賰 賮賷 鬲賱丕賵丞 丕賱賯乇丌賳 丕賱賰乇賷賲</div>    
+  <div style="color:var(--gold);font-size:23px;margin-top:5px">قُرّاء</div>    
+  <div class="subtitle">رفيقك في تلاوة القرآن الكريم</div>    
 </header>  <main class="container">    <section class="panel">    
-    <h2>馃帶 丕賱丕爻鬲賲丕毓 廿賱賶 丕賱賯乇丌賳 丕賱賰乇賷賲</h2>  <div class="controls">    
+    <h2>🎧 الاستماع إلى القرآن الكريم</h2>  <div class="controls">    
   <div>    
-    <label for="readerSelect" class="status">丕禺鬲乇 丕賱賯丕乇卅</label>    
+    <label for="readerSelect" class="status">اختر القارئ</label>    
     <select id="readerSelect">    
-      <option value="ar.alafasy">賲卮丕乇賷 丕賱毓賮丕爻賷</option>    
-      <option value="ar.abdurrahmaansudais">毓亘丿丕賱乇丨賲賳 丕賱爻丿賷爻</option>    
-      <option value="ar.husary">賲丨賲賵丿 禺賱賷賱 丕賱丨氐乇賷</option>    
-      <option value="ar.minshawi">賲丨賲丿 氐丿賷賯 丕賱賲賳卮丕賵賷</option>    
-      <option value="archive:khatma">賲卮丕乇賷 丕賱毓賮丕爻賷 鈥� 丕賱禺鬲賲丞 丕賱賲乇鬲賱丞 賲賳 賰丕賱賷賮賵乇賳賷丕 1430 賴賭</option>    
-      <option value="archive:rokya">丕賱乇賯賷丞 丕賱卮乇毓賷丞 鈥� 丕賱卮賷禺 賲丨賲丿 噩亘乇賷賱</option>    
+      <option value="ar.alafasy">مشاري العفاسي</option>    
+      <option value="ar.abdurrahmaansudais">عبدالرحمن السديس</option>    
+      <option value="ar.husary">محمود خليل الحصري</option>    
+      <option value="ar.minshawi">محمد صديق المنشاوي</option>    
+      <option value="archive:khatma">مشاري العفاسي — الختمة المرتلة من كاليفورنيا 1430 هـ</option>    
+      <option value="archive:rokya">الرقية الشرعية — الشيخ محمد جبريل</option>    
     </select>    
   </div>      <div>    
-    <label for="surahSelect" class="status">丕禺鬲乇 丕賱爻賵乇丞</label>    
+    <label for="surahSelect" class="status">اختر السورة</label>    
     <select id="surahSelect" disabled>    
-      <option value="">噩丕乇賷 鬲丨賲賷賱 丕賱爻賵乇...</option>    
+      <option value="">جاري تحميل السور...</option>    
     </select>    
   </div>    
 </div>    <div class="audio-buttons">    
-  <button id="playButton" type="button" disabled>鈻� 鬲卮睾賷賱 丕賱爻賵乇丞</button>    
-  <button id="pauseButton" type="button">鈴� 廿賷賯丕賮 賲丐賯鬲</button>    
-  <button id="restartButton" type="button" disabled>鈫� 廿毓丕丿丞 賲賳 丕賱亘丿丕賷丞</button>    
+  <button id="playButton" type="button" disabled>▶ تشغيل السورة</button>    
+  <button id="pauseButton" type="button">⏸ إيقاف مؤقت</button>    
+  <button id="restartButton" type="button" disabled>↺ إعادة من البداية</button>    
 </div>    <audio id="audioPlayer" controls preload="none"></audio>
 
 <div id="archiveRecitationWrap" hidden>    
   <iframe id="archiveRecitationPlayer" class="archive-player-frame"    
-    src="about:blank" title="賲卮睾賱 丕賱鬲賱丕賵丞 丕賱賲禺鬲丕乇丞 賲賳 Internet Archive"    
+    src="about:blank" title="مشغل التلاوة المختارة من Internet Archive"    
     loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>    
   <div class="archive-actions">    
-    <a id="archiveRecitationLink" class="archive-link" href="https://archive.org/details/Khatma1430California" target="_blank" rel="noopener noreferrer">賮鬲丨 丕賱鬲爻噩賷賱 丕賱兀氐賱賷 鈫�</a>    
+    <a id="archiveRecitationLink" class="archive-link" href="https://archive.org/details/Khatma1430California" target="_blank" rel="noopener noreferrer">فتح التسجيل الأصلي ↗</a>    
   </div>    
 </div>    
 <div id="audioStatus" class="status" aria-live="polite">    
-  噩丕乇賷 鬲噩賴賷夭 賲卮睾賱 丕賱賯乇丌賳 丕賱賰乇賷賲...    
+  جاري تجهيز مشغل القرآن الكريم...    
 </div>    </section>    <section class="panel mushaf-panel" aria-labelledby="mushafTitle">    
-    <h2 id="mushafTitle">馃摉 丕賱賲氐丨賮 丕賱卮乇賷賮 鈥� 氐賵乇丞 丕賱氐賮丨丞 丕賱兀氐賱賷丞 (佴贍伽 氐賮丨丞)</h2>    
+    <h2 id="mushafTitle">📖 المصحف الشريف — صورة الصفحة الأصلية (٦٠٤ صفحة)</h2>    
     <div class="page-toolbar">    
-      <button id="prevPageButton" type="button">鈫� 丕賱氐賮丨丞 丕賱爻丕亘賯丞</button>    
+      <button id="prevPageButton" type="button">→ الصفحة السابقة</button>    
       <div class="page-jump">    
-        <label for="pageNumberInput">丕賱氐賮丨丞</label>    
-        <input id="pageNumberInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="乇賯賲 氐賮丨丞 丕賱賲氐丨賮">    
-        <button id="goPageButton" type="button">丕匕賴亘</button>    
+        <label for="pageNumberInput">الصفحة</label>    
+        <input id="pageNumberInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="رقم صفحة المصحف">    
+        <button id="goPageButton" type="button">اذهب</button>    
       </div>    
-      <button id="nextPageButton" type="button">丕賱氐賮丨丞 丕賱鬲丕賱賷丞 鈫�</button>    
+      <button id="nextPageButton" type="button">الصفحة التالية ←</button>    
     </div>    
     <div class="page-frame">    
-      <img id="pageImage" src="https://cdn.myquran.com/img/page/1.png" alt="氐賮丨丞 佟 賲賳 賲氐丨賮 丕賱賲丿賷賳丞 丕賱賲賳賵乇丞" loading="eager">    
+      <img id="pageImage" src="https://cdn.myquran.com/img/page/1.png" alt="صفحة ١ من مصحف المدينة المنورة" loading="eager">    
     </div>    
-    <div id="pageCaption" class="page-caption" aria-live="polite">噩丕乇賷 鬲噩賴賷夭 氐賮丨丕鬲 丕賱賲氐丨賮...</div>    
+    <div id="pageCaption" class="page-caption" aria-live="polite">جاري تجهيز صفحات المصحف...</div>    
     <div class="page-actions">    
-      <button id="playPageButton" type="button">鈻� 丕亘丿兀 丕賱鬲賱丕賵丞 賲賳 賴匕賴 丕賱氐賮丨丞</button>    
-      <button id="savePageButton" type="button">馃敄 丨賮馗 賲賵囟毓 丕賱賯乇丕亍丞</button>    
-      <button id="resumePageButton" type="button">鈫� 丕賱乇噩賵毓 賱丌禺乇 賲賵囟毓 賲丨賮賵馗</button>    
+      <button id="playPageButton" type="button">▶ ابدأ التلاوة من هذه الصفحة</button>    
+      <button id="savePageButton" type="button">🔖 حفظ موضع القراءة</button>    
+      <button id="resumePageButton" type="button">↩ الرجوع لآخر موضع محفوظ</button>    
     </div>    
-    <div class="status">賴匕賴 氐賵乇丞 氐賮丨丞 丕賱賲氐丨賮 賳賮爻賴丕. 鬲鬲睾賷乇 丕賱氐賮丨丞 鬲賱賯丕卅賷賸丕 賲毓 丕賱鬲賱丕賵丞 毓賳丿 丕賱丕賳鬲賯丕賱 廿賱賶 氐賮丨丞 噩丿賷丿丞. 丕丨賮馗 賲賵囟毓賰 賱賱毓賵丿丞 廿賱賷賴 賱丕丨賯賸丕.</div>    
+    <div class="status">هذه صورة صفحة المصحف نفسها. تتغير الصفحة تلقائيًا مع التلاوة عند الانتقال إلى صفحة جديدة. احفظ موضعك للعودة إليه لاحقًا.</div>    
   </section>    <div class="layout">  <section class="panel">    
-  <h2>馃摉 爻賵乇 丕賱賯乇丌賳 丕賱賰乇賷賲</h2>    <input
+  <h2>📖 سور القرآن الكريم</h2>    <input
 id="searchInput"
 type="search"
-placeholder="丕亘丨孬 毓賳 丕爻賲 丕賱爻賵乇丞 兀賵 乇賯賲賴丕..."
-aria-label="丕賱亘丨孬 毓賳 爻賵乇丞"
+placeholder="ابحث عن اسم السورة أو رقمها..."
+aria-label="البحث عن سورة"
 
 > 
 
   <div id="surahList" class="surah-list" style="margin-top:14px">    
-    <div class="empty">噩丕乇賷 鬲丨賲賷賱 丕賱爻賵乇...</div>    
+    <div class="empty">جاري تحميل السور...</div>    
   </div>    
 </section>    <section class="panel">    
   <div class="reader-heading">    
-    <h2 id="currentSurahTitle">丕賱賯乇丌賳 丕賱賰乇賷賲</h2>    
-    <div id="surahInfo" class="status">丕禺鬲乇 爻賵乇丞 賱賱亘丿亍 亘丕賱賯乇丕亍丞</div>    
+    <h2 id="currentSurahTitle">القرآن الكريم</h2>    
+    <div id="surahInfo" class="status">اختر سورة للبدء بالقراءة</div>    
   </div>      <div id="quranText" class="ayahs">    
-    <div class="empty">丕禺鬲乇 爻賵乇丞 賲賳 丕賱賯丕卅賲丞 賱毓乇囟 丕賱丌賷丕鬲 丕賱賰乇賷賲丞.</div>    
+    <div class="empty">اختر سورة من القائمة لعرض الآيات الكريمة.</div>    
   </div>    
 </section>    </div>    
 </main>  <footer>    
-  賯購乇賾丕亍 QURAA 鈥� 丕賱賱賴賲 丕噩毓賱 丕賱賯乇丌賳 丕賱賰乇賷賲 乇亘賷毓 賯賱賵亘賳丕    
+  قُرّاء QURAA — اللهم اجعل القرآن الكريم ربيع قلوبنا    
 </footer>  <script>    
 "use strict";    const API = "https://api.alquran.cloud/v1";
 
@@ -395,20 +397,20 @@ const archiveRecitationPlayer = document.getElementById("archiveRecitationPlayer
 const archiveRecitationLink = document.getElementById("archiveRecitationLink");
 let recitationMode = "quran";
 const ruqyaTracks = [
-{ value: "roqia_1", label: "丕賱卮乇賷胤 丕賱兀賵賱- 丿毓丕亍 廿亘胤丕賱 丕賱爻丨乇 - 丕賱乇賯賷丞 丕賱卮乇毓賷丞 賱賰賱 卮賰賵賶", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_1.mp3" },
-{ value: "roqia_2", label: "丕賱卮乇賷胤 丕賱孬丕賳賶 - 丨乇夭 毓馗賷賲 賲賳 丕賱爻丨乇 賵丕賱卮賷胤丕賳 - 賵毓賱丕噩 丕賱賴賲 賵丕賱賰乇亘", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_2.mp3" },
-{ value: "roqia_3", label: "丕賱卮乇賷胤 丕賱孬丕賱孬 - 丕賱毓賱丕噩 賲賳 丕賱爻丨乇 賵丕賱丨爻丿 賵亘毓囟 丕賱兀賲乇丕囟", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_3.mp3" },
-{ value: "roqia_4", label: "丕賱卮乇賷胤 丕賱乇丕亘毓 - 丕賱賵賯丕賷丞 賲賳 丕賱廿氐丕亘丞 亘丕賱爻丨乇 賵丕賱毓賷賳", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_4.mp3" },
-{ value: "roqia_azab_1", label: "丌賷丕鬲 丕賱丨乇賯 賵丕賱毓匕丕亘 - 丕賱卮乇賷胤 丕賱兀賵賱", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_1.mp3" },
-{ value: "roqia_azab_2", label: "丌賷丕鬲 丕賱丨乇賯 賵丕賱毓匕丕亘 - 丕賱卮乇賷胤 丕賱孬丕賳賶", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_2.mp3" },
-{ value: "roqia_azab_3", label: "丌賷丕鬲 丕賱丨乇賯 賵丕賱毓匕丕亘 - 丕賱卮乇賷胤 丕賱孬丕賱孬", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_3.mp3" },
-{ value: "roqia_azab_4", label: "丌賷丕鬲 丕賱丨乇賯 賵丕賱毓匕丕亘 - 丕賱卮乇賷胤 丕賱乇丕亘毓", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_4.mp3" },
-{ value: "roqia_azab_5", label: "丌賷丕鬲 丕賱丨乇賯 賵丕賱毓匕丕亘 - 丕賱卮乇賷胤 丕賱禺丕賲爻", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_5.mp3" },
-{ value: "roqia_duaa", label: "丿毓丕亍 丕賱乇賯賷丞 丕賱卮乇毓賷丞", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_doaa.mp3" }
+{ value: "roqia_1", label: "الشريط الأول- دعاء إبطال السحر - الرقية الشرعية لكل شكوى", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_1.mp3" },
+{ value: "roqia_2", label: "الشريط الثانى - حرز عظيم من السحر والشيطان - وعلاج الهم والكرب", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_2.mp3" },
+{ value: "roqia_3", label: "الشريط الثالث - العلاج من السحر والحسد وبعض الأمراض", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_3.mp3" },
+{ value: "roqia_4", label: "الشريط الرابع - الوقاية من الإصابة بالسحر والعين", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_4.mp3" },
+{ value: "roqia_azab_1", label: "آيات الحرق والعذاب - الشريط الأول", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_1.mp3" },
+{ value: "roqia_azab_2", label: "آيات الحرق والعذاب - الشريط الثانى", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_2.mp3" },
+{ value: "roqia_azab_3", label: "آيات الحرق والعذاب - الشريط الثالث", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_3.mp3" },
+{ value: "roqia_azab_4", label: "آيات الحرق والعذاب - الشريط الرابع", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_4.mp3" },
+{ value: "roqia_azab_5", label: "آيات الحرق والعذاب - الشريط الخامس", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_5.mp3" },
+{ value: "roqia_duaa", label: "دعاء الرقية الشرعية", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_doaa.mp3" }
 ];
 const KHATMA_BASE = "https://archive.org/download/Khatma1430California/";
 let khatmaTracks = [];
-const KHATMA_DISPLAY_NAME = "賲卮丕乇賷 丕賱毓賮丕爻賷 鈥� 丕賱禺鬲賲丞 丕賱賲乇鬲賱丞 賲賳 賰丕賱賷賮賵乇賳賷丕 1430 賴賭";
+const KHATMA_DISPLAY_NAME = "مشاري العفاسي — الختمة المرتلة من كاليفورنيا 1430 هـ";
 const audioButtons = document.querySelector(".audio-buttons");
 const audioStatus = document.getElementById("audioStatus");
 const playButton = document.getElementById("playButton");
@@ -448,13 +450,13 @@ async function fetchJSON(url) {
 const response = await fetch(url);
 
 if (!response.ok) {
-throw new Error("鬲毓匕乇 丕賱丕鬲氐丕賱 亘賲氐丿乇 丕賱亘賷丕賳丕鬲. 乇賲夭 丕賱禺胤兀: " + response.status);
+throw new Error("تعذر الاتصال بمصدر البيانات. رمز الخطأ: " + response.status);
 }
 
 const data = await response.json();
 
 if (data.code !== 200) {
-throw new Error(data.status || "鬲毓匕乇 鬲丨賲賷賱 丕賱亘賷丕賳丕鬲.");
+throw new Error(data.status || "تعذر تحميل البيانات.");
 }
 
 return data.data;
@@ -474,7 +476,7 @@ surahList.replaceChildren();
 if (!filtered.length) {
 const empty = document.createElement("div");
 empty.className = "empty";
-empty.textContent = "賱賲 賷鬲賲 丕賱毓孬賵乇 毓賱賶 爻賵乇丞 亘賴匕丕 丕賱丕爻賲.";
+empty.textContent = "لم يتم العثور على سورة بهذا الاسم.";
 surahList.appendChild(empty);
 return;
 }
@@ -498,7 +500,7 @@ name.textContent = surah.name;
 
 const meta = document.createElement("span");    
 meta.className = "surah-meta";    
-meta.textContent = surah.numberOfAyahs + " 丌賷丞";    
+meta.textContent = surah.numberOfAyahs + " آية";    
 
 button.append(number, name, meta);    
 button.addEventListener("click", async () => {
@@ -509,7 +511,7 @@ item => item.value === String(surah.number)
 );
 
 if (!track) {  
-  setStatus(audioStatus, "鬲毓匕乇 丕賱毓孬賵乇 毓賱賶 賲賱賮 丕賱爻賵乇丞 賮賷 丕賱禺鬲賲丞.", true);  
+  setStatus(audioStatus, "تعذر العثور على ملف السورة في الختمة.", true);  
   return;  
 }  
 
@@ -521,7 +523,7 @@ audioPlayer.load();
 
 setStatus(  
   audioStatus,  
-  "丕賱禺鬲賲丞 丕賱賲乇鬲賱丞 鈥� 爻賵乇丞 " + surah.name + ". 噩丕乇賷 丕賱鬲卮睾賷賱..."  
+  "الختمة المرتلة — سورة " + surah.name + ". جاري التشغيل..."  
 );  
 
 try {  
@@ -529,8 +531,8 @@ try {
 } catch (error) {  
   setStatus(  
     audioStatus,  
-    "鬲賲 丕禺鬲賷丕乇 爻賵乇丞 " + surah.name +  
-    ". 丕囟睾胤 鬲卮睾賷賱 賲賳 賲卮睾賱 丕賱氐賵鬲.",  
+    "تم اختيار سورة " + surah.name +  
+    ". اضغط تشغيل من مشغل الصوت.",  
     true  
   );  
 }  
@@ -564,7 +566,7 @@ const page = Math.max(1, Math.min(604, Number(pageNumber) || 1));
 const thisRequest = ++pageRequestNumber;
 currentPage = page;
 pageNumberInput.value = String(page);
-pageImage.alt = "氐賮丨丞 " + toArabicNumbers(page) + " 賲賳 賲氐丨賮 丕賱賲丿賷賳丞 丕賱賲賳賵乇丞";
+pageImage.alt = "صفحة " + toArabicNumbers(page) + " من مصحف المدينة المنورة";
 pageImage.src = "https://cdn.myquran.com/img/page/" + page + ".png";
 pageImage.onerror = function () {
 pageImage.onerror = null;
@@ -572,36 +574,42 @@ pageImage.src = "https://raw.githubusercontent.com/akram-seid/quran-hd-images/ma
 };
 prevPageButton.disabled = page <= 1;
 nextPageButton.disabled = page >= 604;
-pageCaption.textContent = "噩丕乇賷 鬲丨賲賷賱 亘賷丕賳丕鬲 丕賱氐賮丨丞 " + toArabicNumbers(page) + "...";
+pageCaption.textContent = "جاري تحميل بيانات الصفحة " + toArabicNumbers(page) + "...";
 localStorage.setItem("quraaLastPage", String(page));
 lastSavedPage = page;
 try {
 const data = await fetchJSON(API + "/page/" + page + "/quran-uthmani");
 if (thisRequest !== pageRequestNumber) return;
 currentPageAyahs = data.ayahs || [];
+
+// تحديث النص أسفل المصحف بالآيات الموجودة في الصفحة الحالية.
+if (currentSurah && currentAyahs.length) {
+  renderCurrentPageAyahs();
+}
+
 const first = currentPageAyahs[0];
 const last = currentPageAyahs[currentPageAyahs.length - 1];
 if (first && last) {
 const firstName = first.surah && first.surah.name ? first.surah.name : "";
 const lastName = last.surah && last.surah.name ? last.surah.name : "";
 const range = firstName === lastName
-? firstName + " 鈥� 賲賳 丕賱丌賷丞 " + toArabicNumbers(first.numberInSurah) + " 廿賱賶 " + toArabicNumbers(last.numberInSurah)
-: firstName + "貙 丕賱丌賷丞 " + toArabicNumbers(first.numberInSurah) + " 鈥� " + lastName + "貙 丕賱丌賷丞 " + toArabicNumbers(last.numberInSurah);
-pageCaption.textContent = "氐賮丨丞 " + toArabicNumbers(page) + " 賲賳 佴贍伽 鈥� " + range;
+? firstName + " — من الآية " + toArabicNumbers(first.numberInSurah) + " إلى " + toArabicNumbers(last.numberInSurah)
+: firstName + "، الآية " + toArabicNumbers(first.numberInSurah) + " — " + lastName + "، الآية " + toArabicNumbers(last.numberInSurah);
+pageCaption.textContent = "صفحة " + toArabicNumbers(page) + " من ٦٠٤ • " + range;
 } else {
-pageCaption.textContent = "氐賮丨丞 " + toArabicNumbers(page) + " 賲賳 佴贍伽";
+pageCaption.textContent = "صفحة " + toArabicNumbers(page) + " من ٦٠٤";
 }
 } catch (error) {
 if (thisRequest !== pageRequestNumber) return;
 currentPageAyahs = [];
-pageCaption.textContent = "鬲毓匕乇 鬲丨賲賷賱 亘賷丕賳丕鬲 丕賱丌賷丕鬲 賱賴匕賴 丕賱氐賮丨丞. 賷賲賰賳賰 鬲賯賱賷亘 丕賱氐賮丨丕鬲貙 賵鬲兀賰丿 賲賳 丕鬲氐丕賱 丕賱廿賳鬲乇賳鬲.";
+pageCaption.textContent = "تعذر تحميل بيانات الآيات لهذه الصفحة. يمكنك تقليب الصفحات، وتأكد من اتصال الإنترنت.";
 }
 }
 
 function goToPageFromInput() {
 const value = Number(pageNumberInput.value);
 if (!Number.isInteger(value) || value < 1 || value > 604) {
-pageCaption.textContent = "丕賰鬲亘 乇賯賲 氐賮丨丞 氐丨賷丨賸丕 賲賳 佟 廿賱賶 佴贍伽.";
+pageCaption.textContent = "اكتب رقم صفحة صحيحًا من ١ إلى ٦٠٤.";
 pageNumberInput.value = String(currentPage);
 return;
 }
@@ -610,29 +618,29 @@ loadMushafPage(value);
 
 async function playCurrentPage() {
 if (!currentPageAyahs.length) {
-setStatus(audioStatus, "丕賳鬲馗乇 丨鬲賶 賷鬲賲 鬲丨賲賷賱 亘賷丕賳丕鬲 丕賱氐賮丨丞貙 孬賲 丨丕賵賱 賲乇丞 兀禺乇賶.", true);
+setStatus(audioStatus, "انتظر حتى يتم تحميل بيانات الصفحة، ثم حاول مرة أخرى.", true);
 return;
 }
 const first = currentPageAyahs[0];
 const surahNumber = first.surah && first.surah.number;
 if (!surahNumber) {
-setStatus(audioStatus, "鬲毓匕乇 鬲丨丿賷丿 丕賱爻賵乇丞 丕賱禺丕氐丞 亘賴匕賴 丕賱氐賮丨丞.", true);
+setStatus(audioStatus, "تعذر تحديد السورة الخاصة بهذه الصفحة.", true);
 return;
 }
 await loadSurah(surahNumber);
 const index = currentAyahs.findIndex(a => a.numberInSurah === first.numberInSurah);
 if (index >= 0) playAyah(index);
-else setStatus(audioStatus, "鬲毓匕乇 鬲丨丿賷丿 亘丿丕賷丞 丕賱氐賮丨丞 丿丕禺賱 丕賱爻賵乇丞.", true);
+else setStatus(audioStatus, "تعذر تحديد بداية الصفحة داخل السورة.", true);
 }
 
 async function loadSurahs() {
-setStatus(audioStatus, "噩丕乇賷 丕賱丕鬲氐丕賱 亘賲氐丿乇 亘賷丕賳丕鬲 丕賱賯乇丌賳 丕賱賰乇賷賲...");
+setStatus(audioStatus, "جاري الاتصال بمصدر بيانات القرآن الكريم...");
 
 try {
 const data = await fetchJSON(API + "/surah");
 
 if (!Array.isArray(data) || data.length !== 114) {    
-  throw new Error("賵氐賱鬲 亘賷丕賳丕鬲 睾賷乇 賲賰鬲賲賱丞 賱賯丕卅賲丞 丕賱爻賵乇.");    
+  throw new Error("وصلت بيانات غير مكتملة لقائمة السور.");    
 }    
 
 allSurahs = data;    
@@ -649,7 +657,7 @@ allSurahs.forEach(surah => {
 surahSelect.disabled = false;    
 renderSurahs();    
 
-setStatus(audioStatus, "鬲賲 鬲丨賲賷賱 丕賱爻賵乇 亘賳噩丕丨. 丕禺鬲乇 爻賵乇丞 賱賱丕爻鬲賲丕毓.");    
+setStatus(audioStatus, "تم تحميل السور بنجاح. اختر سورة للاستماع.");    
 
 loadSurah(1);
 
@@ -660,11 +668,11 @@ surahList.innerHTML = "";
 const message = document.createElement("div");    
 message.className = "empty";    
 message.textContent =    
-  "鬲毓匕乇 鬲丨賲賷賱 丕賱爻賵乇. 鬲兀賰丿 賲賳 丕鬲氐丕賱 丕賱廿賳鬲乇賳鬲 孬賲 丕囟睾胤 夭乇 廿毓丕丿丞 丕賱賲丨丕賵賱丞 兀丿賳丕賴.";    
+  "تعذر تحميل السور. تأكد من اتصال الإنترنت ثم اضغط زر إعادة المحاولة أدناه.";    
 
 const retry = document.createElement("button");    
 retry.type = "button";    
-retry.textContent = "廿毓丕丿丞 丕賱賲丨丕賵賱丞";    
+retry.textContent = "إعادة المحاولة";    
 retry.addEventListener("click", loadSurahs);    
 
 surahList.append(message, retry);    
@@ -672,7 +680,7 @@ surahSelect.disabled = true;
 
 setStatus(    
   audioStatus,    
-  "丨丿孬 禺胤兀 兀孬賳丕亍 鬲丨賲賷賱 賯丕卅賲丞 丕賱爻賵乇: " + error.message,    
+  "حدث خطأ أثناء تحميل قائمة السور: " + error.message,    
   true    
 );
 
@@ -680,93 +688,149 @@ setStatus(
 }
 
 async function loadSurah(number, resumeIfPlaying = false) {
-const resumePlayback = resumeIfPlaying && recitationMode === "quran" && !audioPlayer.paused;
-const surah = allSurahs.find(item => item.number === Number(number));
+  const resumePlayback =
+    resumeIfPlaying &&
+    recitationMode === "quran" &&
+    !audioPlayer.paused;
 
-if (!surah) return;
+  const surah = allSurahs.find(
+    item => item.number === Number(number)
+  );
 
-const thisRequest = ++requestNumber;
-++audioRequestNumber;
+  if (!surah) return;
 
-currentSurah = surah;
-currentAyahs = [];
-currentAyahIndex = 0;
-loadingAudio = false;
+  const thisRequest = ++requestNumber;
+  ++audioRequestNumber;
 
-audioPlayer.pause();
-audioPlayer.removeAttribute("src");
-audioPlayer.load();
+  currentSurah = surah;
+  currentAyahs = [];
+  currentAyahIndex = 0;
+  loadingAudio = false;
 
-playButton.disabled = true;
-restartButton.disabled = true;
+  audioPlayer.pause();
+  audioPlayer.removeAttribute("src");
+  audioPlayer.load();
 
-surahSelect.value = String(surah.number);
-currentSurahTitle.textContent = surah.name;
-surahInfo.textContent = "噩丕乇賷 鬲丨賲賷賱 丕賱丌賷丕鬲...";
-quranText.innerHTML = '<div class="empty">噩丕乇賷 鬲丨賲賷賱 丕賱丌賷丕鬲 丕賱賰乇賷賲丞...</div>';
+  playButton.disabled = true;
+  restartButton.disabled = true;
 
-renderSurahs(searchInput.value);
+  surahSelect.value = String(surah.number);
+  currentSurahTitle.textContent = surah.name;
+  surahInfo.textContent = "جاري تحميل الآيات...";
+  quranText.innerHTML =
+    '<div class="empty">جاري تحميل الآيات الكريمة...</div>';
 
-try {
-const data = await fetchJSON(
-API + "/surah/" + surah.number + "/quran-uthmani"
-);
+  renderSurahs(searchInput.value);
 
-if (thisRequest !== requestNumber) return;    
+  try {
+    const data = await fetchJSON(
+      API + "/surah/" + surah.number + "/quran-uthmani"
+    );
 
-currentAyahs = data.ayahs || [];    
+    if (thisRequest !== requestNumber) return;
 
-if (!currentAyahs.length) {    
-  throw new Error("賱賲 鬲氐賱 丌賷丕鬲 丕賱爻賵乇丞.");    
-}    
+    currentAyahs = data.ayahs || [];
 
-quranText.replaceChildren();    
+    if (!currentAyahs.length) {
+      throw new Error("لم تصل آيات السورة.");
+    }
 
-currentAyahs.forEach((ayah, index) => {    
-  const span = document.createElement("span");    
-  span.className = "ayah";    
-  span.dataset.index = index;    
-  span.textContent = ayah.text + " ";    
+    surahInfo.textContent =
+      (surah.revelationType === "Meccan" ? "مكية" : "مدنية") +
+      " • عدد الآيات: " + surah.numberOfAyahs;
 
-  span.addEventListener("click", () => playAyah(index));    
+    playButton.disabled = false;
+    restartButton.disabled = false;
 
-  quranText.appendChild(span);    
+    // اعرض آيات الصفحة الحالية فقط.
+    renderCurrentPageAyahs();
 
-  const numberSpan = document.createElement("span");    
-  numberSpan.className = "ayah-number";    
-  numberSpan.textContent = "蹫 " + toArabicNumbers(ayah.numberInSurah) + " ";    
-  quranText.appendChild(numberSpan);    
-});    
+    setStatus(
+      audioStatus,
+      "تم تحميل سورة " + surah.name + ". اضغط تشغيل للاستماع."
+    );
 
-surahInfo.textContent =    
-  surah.revelationType === "Meccan" ? "賲賰賷丞" : "賲丿賳賷丞";    
-surahInfo.textContent += " 鈥� 毓丿丿 丕賱丌賷丕鬲: " + surah.numberOfAyahs;    
+    if (resumePlayback) {
+      playAyah(0);
+    }
 
-playButton.disabled = false;    
-restartButton.disabled = false;    
+  } catch (error) {
+    if (thisRequest !== requestNumber) return;
 
-setStatus(audioStatus, "鬲賲 鬲丨賲賷賱 爻賵乇丞 " + surah.name + ". 丕囟睾胤 鬲卮睾賷賱 賱賱丕爻鬲賲丕毓.");    
-if (resumePlayback) playAyah(0);
+    console.error("QURAA loadSurah error:", error);
 
-} catch (error) {
-if (thisRequest !== requestNumber) return;
+    quranText.innerHTML = "";
 
-console.error("QURAA loadSurah error:", error);    
+    const message = document.createElement("div");
+    message.className = "empty";
+    message.textContent =
+      "تعذر تحميل آيات السورة. تحقق من الإنترنت وحاول مرة أخرى.";
 
-quranText.innerHTML = "";    
-const message = document.createElement("div");    
-message.className = "empty";    
-message.textContent = "鬲毓匕乇 鬲丨賲賷賱 丌賷丕鬲 丕賱爻賵乇丞. 鬲丨賯賯 賲賳 丕賱廿賳鬲乇賳鬲 賵丨丕賵賱 賲乇丞 兀禺乇賶.";    
-quranText.appendChild(message);    
+    quranText.appendChild(message);
 
-surahInfo.textContent = "鬲毓匕乇 鬲丨賲賷賱 丕賱爻賵乇丞";    
-setStatus(audioStatus, error.message, true);
+    surahInfo.textContent = "تعذر تحميل السورة";
 
+    setStatus(audioStatus, error.message, true);
+  }
 }
-}
+function renderCurrentPageAyahs() {
+  quranText.replaceChildren();
 
+  if (!currentPageAyahs.length || !currentAyahs.length) {
+    const message = document.createElement("div");
+    message.className = "empty";
+    message.textContent = "جاري تجهيز آيات الصفحة...";
+    quranText.appendChild(message);
+    return;
+  }
+
+  // استخراج آيات السورة الموجودة في صفحة المصحف الحالية.
+  const pageAyahs = currentPageAyahs.filter(
+    ayah => ayah.surah &&
+            currentSurah &&
+            ayah.surah.number === currentSurah.number
+  );
+
+  if (!pageAyahs.length) {
+    const message = document.createElement("div");
+    message.className = "empty";
+    message.textContent =
+      "لا توجد آيات من سورة " + currentSurah.name +
+      " في الصفحة الحالية من المصحف.";
+
+    quranText.appendChild(message);
+    return;
+  }
+
+  pageAyahs.forEach(pageAyah => {
+    const index = currentAyahs.findIndex(
+      ayah => ayah.numberInSurah === pageAyah.numberInSurah
+    );
+
+    if (index < 0) return;
+
+    const span = document.createElement("span");
+    span.className = "ayah";
+    span.dataset.index = index;
+    span.textContent = pageAyah.text + " ";
+
+    span.addEventListener("click", () => playAyah(index));
+
+    quranText.appendChild(span);
+
+    const numberSpan = document.createElement("span");
+    numberSpan.className = "ayah-number";
+    numberSpan.textContent =
+      "۞ " + toArabicNumbers(pageAyah.numberInSurah) + " ";
+
+    quranText.appendChild(numberSpan);
+  });
+
+  // الاحتفاظ بتظليل الآية الحالية إن كانت ضمن الصفحة.
+  markPlaying(currentAyahIndex);
+}
 function toArabicNumbers(value) {
-return String(value).replace(/\d/g, digit => "贍佟佗伲伽佶佴侑侉侃"[digit]);
+return String(value).replace(/\d/g, digit => "٠١٢٣٤٥٦٧٨٩"[digit]);
 }
 
 function markPlaying(index) {
@@ -778,7 +842,7 @@ const active = quranText.querySelector('[data-index="' + index + '"]');
 
 if (active) {
 active.classList.add("playing");
-active.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
 }
 }
 
@@ -801,8 +865,8 @@ const reader = readerSelect.value;
 
 setStatus(
 audioStatus,
-"噩丕乇賷 鬲噩賴賷夭 丕賱丌賷丞 " + toArabicNumbers(index + 1) +
-" 賲賳 爻賵乇丞 " + currentSurah.name + "..."
+"جاري تجهيز الآية " + toArabicNumbers(index + 1) +
+" من سورة " + currentSurah.name + "..."
 );
 
 try {
@@ -828,7 +892,7 @@ if (!selectedAyah || !selectedAyah.audio) {
 }    
 
 if (!selectedAyah || !selectedAyah.audio) {    
-  throw new Error("賱賲 賷氐賱 乇丕亘胤 氐賵鬲 賱賴匕賴 丕賱丌賷丞 賲賳 賲氐丿乇 丕賱鬲賱丕賵丞. 噩乇賾亘 丕禺鬲賷丕乇 賯丕乇卅 丌禺乇 兀賵 鬲丨賯賯 賲賳 丕賱廿賳鬲乇賳鬲.");    
+  throw new Error("لم يصل رابط صوت لهذه الآية من مصدر التلاوة. جرّب اختيار قارئ آخر أو تحقق من الإنترنت.");    
 }    
 
 audioPlayer.src = selectedAyah.audio;    
@@ -838,8 +902,8 @@ markPlaying(index);
 
 setStatus(    
   audioStatus,    
-  "爻賵乇丞 " + currentSurah.name +    
-  " 鈥� 丕賱丌賷丞 " + toArabicNumbers(index + 1)    
+  "سورة " + currentSurah.name +    
+  " • الآية " + toArabicNumbers(index + 1)    
 );    
 
 loadingAudio = false;    
@@ -849,7 +913,7 @@ try {
 } catch (playError) {    
   setStatus(    
     audioStatus,    
-    "丕囟睾胤 夭乇 丕賱鬲卮睾賷賱 丿丕禺賱 賲卮睾賱 丕賱氐賵鬲 賱亘丿亍 丕賱鬲賱丕賵丞.",    
+    "اضغط زر التشغيل داخل مشغل الصوت لبدء التلاوة.",    
     true    
   );    
 }
@@ -862,7 +926,7 @@ console.error("QURAA audio error:", error);
 
 setStatus(    
   audioStatus,    
-  "鬲毓匕乇 鬲卮睾賷賱 丕賱鬲賱丕賵丞: " + error.message,    
+  "تعذر تشغيل التلاوة: " + error.message,    
   true    
 );
 
@@ -871,14 +935,14 @@ setStatus(
 
 audioPlayer.addEventListener("ended", () => {
 if (recitationMode !== "quran") {
-setStatus(audioStatus, "丕賳鬲賴賶 賲賱賮 丕賱鬲賱丕賵丞. 賷賲賰賳賰 丕禺鬲賷丕乇 爻賵乇丞 兀禺乇賶 賲賳 丕賱賯丕卅賲丞.");
+setStatus(audioStatus, "انتهى ملف التلاوة. يمكنك اختيار سورة أخرى من القائمة.");
 return;
 }
 if (currentAyahIndex + 1 < currentAyahs.length) {
 playAyah(currentAyahIndex + 1);
 } else {
 markPlaying(-1);
-setStatus(audioStatus, "丕賳鬲賴鬲 鬲賱丕賵丞 爻賵乇丞 " + currentSurah.name + ".");
+setStatus(audioStatus, "انتهت تلاوة سورة " + currentSurah.name + ".");
 }
 });
 
@@ -886,7 +950,7 @@ audioPlayer.addEventListener("error", () => {
 if (audioPlayer.currentSrc) {
 setStatus(
 audioStatus,
-"鬲毓匕乇 鬲卮睾賷賱 丕賱賲賱賮 丕賱氐賵鬲賷. 噩乇賾亘 賯丕乇卅賸丕 丌禺乇 兀賵 鬲丨賯賯 賲賳 丕賱廿賳鬲乇賳鬲.",
+"تعذر تشغيل الملف الصوتي. جرّب قارئًا آخر أو تحقق من الإنترنت.",
 true
 );
 }
@@ -948,7 +1012,7 @@ audioPlayer.load();
 
 setStatus(  
   audioStatus,  
-  "噩丕乇賷 鬲卮睾賷賱: " + track.label  
+  "جاري تشغيل: " + track.label  
 );  
 
 try {  
@@ -956,8 +1020,8 @@ try {
 } catch (error) {  
   setStatus(  
     audioStatus,  
-    "鬲賲 丕禺鬲賷丕乇 " + track.label +  
-    ". 丕囟睾胤 鈻� 鬲卮睾賷賱 賮賷 賲卮睾賱 丕賱氐賵鬲 兀爻賮賱 丕賱賯丕卅賲丞.",  
+    "تم اختيار " + track.label +  
+    ". اضغط ▶ تشغيل في مشغل الصوت أسفل القائمة.",  
     true  
   );  
 }  
@@ -992,7 +1056,7 @@ archiveRecitationWrap.hidden = true;
 audioPlayer.hidden = false;
 audioButtons.hidden = false;
 surahSelect.replaceChildren();
-khatmaTracks = (allSurahs.length ? allSurahs : Array.from({length:114}, (_, i) => ({number:i+1, name:"丕賱爻賵乇丞 " + (i+1)}))).map(surah => ({
+khatmaTracks = (allSurahs.length ? allSurahs : Array.from({length:114}, (_, i) => ({number:i+1, name:"السورة " + (i+1)}))).map(surah => ({
 value: String(surah.number),
 label: surah.number + " - " + surah.name,
 url: KHATMA_BASE + String(surah.number).padStart(3, "0") + ".mp3"
@@ -1007,7 +1071,7 @@ surahSelect.disabled = false;
 surahSelect.value = "1";
 audioPlayer.src = KHATMA_BASE + "001.mp3";
 audioPlayer.load();
-setStatus(audioStatus, KHATMA_DISPLAY_NAME + ". 丕禺鬲乇 丕賱爻賵乇丞 賲賳 丕賱賯丕卅賲丞 賵卮睾賾賱 賲賱賮 MP3 丕賱兀氐賱賷.");
+setStatus(audioStatus, KHATMA_DISPLAY_NAME + ". اختر السورة من القائمة وشغّل ملف MP3 الأصلي.");
 return;
 }
 
@@ -1038,7 +1102,7 @@ audioPlayer.load();
 
 setStatus(
   audioStatus,
-  "鬲賲 鬲丨賲賷賱 賯丕卅賲丞 丕賱乇賯賷丞 丕賱卮乇毓賷丞. 丕禺鬲乇 丕賱卮乇賷胤 丕賱賲胤賱賵亘 賲賳 丕賱賯丕卅賲丞 丕賱孬丕賳賷丞."
+  "تم تحميل قائمة الرقية الشرعية. اختر الشريط المطلوب من القائمة الثانية."
 );
 return;
 }
@@ -1073,7 +1137,7 @@ nextPageButton.addEventListener("click", () => loadMushafPage(currentPage + 1));
 goPageButton.addEventListener("click", goToPageFromInput);
 pageNumberInput.addEventListener("keydown", event => { if (event.key === "Enter") goToPageFromInput(); });
 playPageButton.addEventListener("click", playCurrentPage);
-savePageButton.addEventListener("click", () => { savedReadingPage = currentPage; localStorage.setItem("quraaReadingPage", String(currentPage)); pageCaption.textContent = "鬲賲 丨賮馗 賲賵囟毓 丕賱賯乇丕亍丞: 氐賮丨丞 " + toArabicNumbers(currentPage) + " 賲賳 佴贍伽."; });
+savePageButton.addEventListener("click", () => { savedReadingPage = currentPage; localStorage.setItem("quraaReadingPage", String(currentPage)); pageCaption.textContent = "تم حفظ موضع القراءة: صفحة " + toArabicNumbers(currentPage) + " من ٦٠٤."; });
 resumePageButton.addEventListener("click", () => loadMushafPage(savedReadingPage || 1));
 loadMushafPage(lastSavedPage);
 loadSurahs();
