@@ -3,384 +3,794 @@
 <meta charset="UTF-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 <meta name="theme-color" content="#073b2b">    
-<meta name="description" content="قُرّاء - موقع للاستماع إلى القرآن الكريم وقراءة آياته">    
-<title>قُرّاء | QURAA</title>  <style>    
-:root {    
-  --green: #073b2b;    
-  --green2: #0d513b;    
-  --gold: #d8b66a;    
-  --cream: #f8f4e9;    
-  --text: #f8f4e9;    
-  --muted: #c8d6cd;    
-}    * {
+<meta name="description" content="�1�6�1�9�1�9�1�1�1�9�1�3 - �1�9�1�2�1�6�1�7 �1�8�1�8�1�9�1�1�1�2�1�9�1�9�1�7 �1�7�1�8�1�3 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9 �1�2�1�6�1�9�1�9�1�3�1�1 �1�4�1�4�1�9�1�2�1�1">    
+<title>�1�6�1�9�1�9�1�1�1�9�1�3 | QURAA</title>  <style>    
+:root {
+  --green: #062d23;
+  --green2: #0b4634;
+  --green3: #12563f;
+  --gold: #e3c47e;
+  --gold-light: #f5e4b6;
+  --cream: #fffaf0;
+  --text: #f8f5eb;
+  --muted: #c3d4c9;
+  --border: rgba(227, 196, 126, .3);
+  --shadow: 0 12px 32px rgba(0, 0, 0, .2);
+}
+
+* {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 15px;
+}
 
 body {
-margin: 0;
-font-family: Tahoma, Arial, sans-serif;
-color: var(--text);
-background:
-radial-gradient(ellipse at top, #16543c 0%, transparent 65%),
-var(--green);
-min-height: 100vh;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Tahoma, Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(37, 112, 78, .5), transparent 55%),
+    radial-gradient(ellipse at 100% 55%, rgba(14, 78, 55, .2), transparent 45%),
+    linear-gradient(160deg, #073b2b 0%, #041f19 100%);
 }
+
+/* ===== �1�9�1�5�1�1 �1�9�1�8�1�9�1�2�1�6�1�7 ===== */
 
 header {
-padding: 26px 16px 22px;
-text-align: center;
-border-bottom: 1px solid rgba(216,182,106,.35);
-background: rgba(0,0,0,.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 14px 25px;
+  text-align: center;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, .22), transparent),
+    rgba(5, 43, 32, .45);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .12);
 }
 
-.logo {
-color: var(--gold);
-font-size: clamp(34px, 7vw, 48px);
-font-weight: bold;
-letter-spacing: 2px;
+header::before {
+  content: "�1�2";
+  display: block;
+  color: rgba(227, 196, 126, .7);
+  font-size: 23px;
+  margin-bottom: 5px;
 }
 
-.subtitle {
-margin-top: 8px;
-color: var(--muted);
-font-size: 14px;
+header .logo {
+  display: block;
+  width: 100%;
+  color: var(--gold);
+  font-size: clamp(38px, 8vw, 55px);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1.25;
+  text-align: center;
+  text-shadow: 0 3px 22px rgba(227, 196, 126, .2);
 }
+
+header > div:nth-child(2) {
+  display: block;
+  width: 100%;
+  margin: 7px auto 0 !important;
+  color: var(--gold-light) !important;
+  font-size: 26px !important;
+  font-weight: bold;
+  text-align: center;
+}
+
+header .subtitle {
+  display: block;
+  width: 100%;
+  margin-top: 11px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: center;
+}
+
+/* �1�0�1�6�1�9�1�5�1�1 �1�1�1�9�1�7�1�8�1�1 �1�5�1�1�1�5�1�8 �1�9�1�8�1�7�1�0�1�2�1�9�1�0 */
+header::after {
+  content: "";
+  width: 90px;
+  height: 2px;
+  margin-top: 17px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    transparent
+  );
+}
+
+/* ===== �1�9�1�1�1�9�1�5�1�1 �1�9�1�8�1�9�1�5�1�2�1�2�1�3 ===== */
 
 .container {
-width: min(1100px, 94%);
-margin: 22px auto 40px;
+  width: min(1120px, 94%);
+  margin: 27px auto 42px;
 }
 
 .panel {
-background: rgba(255,255,255,.055);
-border: 1px solid rgba(216,182,106,.28);
-border-radius: 18px;
-padding: 18px;
-margin-bottom: 18px;
-box-shadow: 0 8px 25px rgba(0,0,0,.12);
+  position: relative;
+  min-width: 0;
+  padding: 22px;
+  margin-bottom: 21px;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, .075),
+      rgba(255, 255, 255, .025)
+    );
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* �1�8�1�9�1�1�1�1 �1�8�1�1�1�0�1�4�1�1 �1�5�1�7�1�8�1�3 �1�9�1�8�1�0�1�5�1�9�1�6�1�9�1�2 */
+.panel::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 2px;
+  margin-bottom: 13px;
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold)
+  );
 }
 
 h2 {
-color: var(--gold);
-font-size: 20px;
-margin: 0 0 15px;
+  margin: 0 0 17px;
+  color: var(--gold);
+  font-size: 20px;
+  line-height: 1.8;
+  font-weight: bold;
 }
+
+/* ===== �1�9�1�6�1�2�1�4�1�9�1�9 �1�9�1�8�1�6�1�9�1�9�1�8 �1�2�1�9�1�8�1�1�1�2�1�9�1�1 ===== */
 
 .controls {
-display: grid;
-grid-template-columns: repeat(2, minmax(0,1fr));
-gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
 }
 
-input, select, button {
-font: inherit;
-border-radius: 10px;
-padding: 12px;
+.controls > div {
+  min-width: 0;
 }
 
-input, select {
-min-width: 0;
-width: 100%;
-color: var(--text);
-background: #104632;
-border: 1px solid rgba(216,182,106,.4);
-outline: none;
-}
-
-select option {
-background: #073b2b;
-color: white;
-}
-
-button {
-cursor: pointer;
-border: 1px solid var(--gold);
-background: var(--gold);
-color: #173526;
-font-weight: bold;
-transition: .2s;
-}
-
-button:hover {
-filter: brightness(1.08);
-}
-
-button:disabled {
-opacity: .5;
-cursor: not-allowed;
-}
-
-.audio-buttons {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-margin-top: 12px;
-}
-
-.audio-buttons button {
-flex: 1;
-min-width: 100px;
-}
-
-audio {
-display: block;
-width: 100%;
-margin-top: 16px;
+label {
+  display: inline-block;
 }
 
 .status {
-color: var(--muted);
-font-size: 14px;
-line-height: 1.8;
-margin-top: 10px;
-overflow-wrap: anywhere;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  margin-top: 10px;
+  overflow-wrap: anywhere;
 }
 
 .status.error {
-color: #ffb8a9;
+  color: #ffb8a9;
 }
 
+input,
+select,
+button {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 12px;
+}
+
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 12px;
+  color: var(--text);
+  background: #0b4030;
+  border: 1px solid rgba(227, 196, 126, .4);
+  outline: none;
+  transition:
+    border-color .2s,
+    box-shadow .2s,
+    background .2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(227, 196, 126, .12);
+  background: #104b38;
+}
+
+select option {
+  color: white;
+  background: #073b2b;
+}
+
+/* ===== �1�9�1�8�1�5�1�0�1�9�1�9�1�9 ===== */
+
+button {
+  padding: 12px 15px;
+  cursor: pointer;
+  color: #183526;
+  background: linear-gradient(
+    135deg,
+    #f0d99e,
+    #d8b66a
+  );
+  border: 1px solid var(--gold);
+  font-weight: bold;
+  transition:
+    transform .18s,
+    filter .18s,
+    box-shadow .18s;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .17);
+}
+
+button:active:not(:disabled) {
+  transform: scale(.98);
+}
+
+button:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== �1�9�1�2�1�8�1�8 �1�9�1�8�1�2�1�8�1�9�1�2�1�1 ===== */
+
+.audio-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.audio-buttons button {
+  flex: 1 1 130px;
+  min-width: 0;
+  min-height: 46px;
+}
+
+#playButton {
+  background: linear-gradient(135deg, #f1d99b, #d5ae58);
+}
+
+#pauseButton {
+  color: var(--gold-light);
+  background: rgba(227, 196, 126, .1);
+  border-color: rgba(227, 196, 126, .5);
+}
+
+#restartButton {
+  color: var(--text);
+  background: rgba(255, 255, 255, .07);
+  border-color: rgba(255, 255, 255, .2);
+}
+
+audio {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-top: 17px;
+  border-radius: 12px;
+}
+
+#archiveRecitationWrap[hidden],
+audio[hidden],
+.audio-buttons[hidden] {
+  display: none !important;
+}
+
+#archiveRecitationWrap {
+  margin-top: 15px;
+}
+
+.archive-player-frame {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 180px;
+  background: white;
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+}
+
+.archive-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.archive-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 17px;
+  color: #173526;
+  background: var(--gold);
+  border-radius: 11px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===== �1�9�1�8�1�9�1�3�1�5�1�5 �1�9�1�8�1�2�1�9�1�4�1�5 ===== */
+
+.mushaf-panel {
+  text-align: center;
+  scroll-margin-top: 14px;
+}
+
+.page-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.page-toolbar button,
+.page-actions button {
+  min-height: 45px;
+}
+
+.page-toolbar .page-jump {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.page-toolbar .page-jump label {
+  color: var(--gold-light);
+  white-space: nowrap;
+}
+
+.page-toolbar input {
+  width: 75px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.page-toolbar button {
+  padding: 11px 8px;
+}
+
+.page-frame {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fffdf6;
+  border: 2px solid rgba(227, 196, 126, .85);
+  border-radius: 15px;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, .25),
+    inset 0 0 0 3px rgba(227, 196, 126, .13);
+}
+
+#pageImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  background: #fffdf6;
+  border-radius: 5px;
+}
+
+.page-caption {
+  margin-top: 13px;
+  color: var(--gold-light);
+  font-size: 14px;
+  line-height: 2;
+  text-align: center;
+}
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.page-actions button {
+  flex: 1 1 150px;
+}
+
+/* ===== �1�6�1�9�1�8�1�9�1�1 �1�9�1�8�1�1�1�2�1�9 ===== */
+
 .layout {
-display: grid;
-grid-template-columns: 280px minmax(0,1fr);
-gap: 18px;
-align-items: start;
+  display: grid;
+  grid-template-columns: 285px minmax(0, 1fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.layout > .panel {
+  min-width: 0;
+}
+
+#searchInput {
+  margin-bottom: 4px;
+  background: rgba(5, 48, 36, .85);
+}
+
+#searchInput::placeholder {
+  color: #afc3b6;
 }
 
 .surah-list {
-display: grid;
-gap: 8px;
-max-height: 650px;
-overflow-y: auto;
-padding-left: 3px;
+  display: grid;
+  gap: 8px;
+  max-height: 650px;
+  overflow-y: auto;
+  padding: 2px 2px 2px 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) rgba(255, 255, 255, .06);
 }
 
 .surah-item {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 10px;
-text-align: right;
-width: 100%;
-color: var(--text);
-background: rgba(255,255,255,.045);
-border: 1px solid rgba(216,182,106,.17);
-font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 49px;
+  padding: 9px 11px;
+  text-align: right;
+  color: var(--text);
+  background: rgba(255, 255, 255, .035);
+  border: 1px solid rgba(227, 196, 126, .17);
+  border-radius: 12px;
+  font-weight: normal;
+  box-shadow: none;
+}
+
+.surah-item:hover:not(:disabled) {
+  color: var(--gold-light);
+  background: rgba(227, 196, 126, .09);
+  border-color: rgba(227, 196, 126, .5);
+  box-shadow: none;
 }
 
 .surah-item.active {
-color: var(--gold);
-background: rgba(216,182,106,.13);
-border-color: var(--gold);
+  color: var(--gold-light);
+  background: rgba(227, 196, 126, .14);
+  border-color: var(--gold);
+  box-shadow: inset -3px 0 0 var(--gold);
 }
 
 .surah-number {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-min-width: 30px;
-height: 30px;
-border: 1px solid rgba(216,182,106,.5);
-border-radius: 50%;
-font-size: 12px;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 31px;
+  height: 31px;
+  color: var(--gold-light);
+  border: 1px solid rgba(227, 196, 126, .5);
+  border-radius: 50%;
+  font-size: 12px;
 }
 
 .surah-name {
-flex: 1;
+  flex: 1;
+  min-width: 0;
 }
 
 .surah-meta {
-font-size: 11px;
-color: var(--muted);
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
 }
 
+/* ===== �1�7�1�9�1�4 �1�9�1�8�1�4�1�4�1�9�1�2 ===== */
+
 .reader-heading {
-text-align: center;
-border-bottom: 1px solid rgba(216,182,106,.22);
-padding-bottom: 15px;
-margin-bottom: 18px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
 }
 
 .reader-heading h2 {
-font-size: 27px;
-margin-bottom: 8px;
+  margin-bottom: 8px;
+  font-size: 27px;
 }
 
 .ayahs {
-color: var(--cream);
-font-family: "Traditional Arabic", "Amiri", Tahoma, serif;
-font-size: clamp(22px, 3.5vw, 29px);
-line-height: 2.25;
-text-align: justify;
+  color: var(--cream);
+  font-family: "Traditional Arabic", "Amiri", Tahoma, serif;
+  font-size: clamp(22px, 3.5vw, 30px);
+  line-height: 2.3;
+  text-align: justify;
+  overflow-wrap: anywhere;
 }
 
 .ayah {
-cursor: pointer;
-border-radius: 6px;
-padding: 1px 2px;
+  padding: 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
 }
 
 .ayah:hover {
-background: rgba(216,182,106,.12);
+  background: rgba(227, 196, 126, .1);
 }
 
 .ayah.playing {
-color: var(--gold);
-background: rgba(216,182,106,.12);
+  color: #f4d58e;
+  background: rgba(227, 196, 126, .14);
+  box-shadow: 0 0 0 2px rgba(227, 196, 126, .06);
 }
 
 .ayah-number {
-color: var(--gold);
-font-family: Tahoma, Arial, sans-serif;
-font-size: 15px;
-white-space: nowrap;
+  color: var(--gold);
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 15px;
+  white-space: nowrap;
 }
 
 .empty {
-text-align: center;
-color: var(--muted);
-padding: 25px 8px;
-line-height: 1.9;
+  padding: 25px 8px;
+  color: var(--muted);
+  line-height: 2;
+  text-align: center;
 }
+
+/* ===== �1�2�1�8�1�4�1�4�1�8 �1�9�1�8�1�9�1�2�1�6�1�7 ===== */
 
 footer {
-text-align: center;
-color: var(--muted);
-padding: 22px 12px;
-border-top: 1px solid rgba(216,182,106,.2);
-font-size: 13px;
+  margin-top: 32px;
+  padding: 24px 12px;
+  color: var(--muted);
+  background: rgba(0, 0, 0, .12);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 2.2;
+  text-align: center;
 }
+
+/* ===== �1�9�1�8�1�1�1�2�1�9�1�2�1�5 �1�2�1�9�1�8�1�5�1�4�1�1�1�0�1�1 �1�9�1�8�1�3�1�8�1�4�1�9�1�1 ===== */
 
 @media (max-width: 720px) {
-.container {
-width: 94%;
-margin-top: 14px;
+  header {
+    padding: 25px 10px 21px;
+  }
+
+  header .logo {
+    font-size: 42px;
+  }
+
+  .container {
+    width: 94%;
+    margin: 17px auto 30px;
+  }
+
+  .panel {
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 17px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  .controls {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .surah-list {
+    max-height: 340px;
+  }
+
+  .page-toolbar {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .page-toolbar .page-jump {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    flex-wrap: wrap;
+  }
+
+  .page-toolbar button {
+    font-size: 12px;
+    padding: 11px 5px;
+  }
+
+  .page-toolbar input {
+    width: 75px;
+  }
+
+  .page-actions button {
+    flex: 1 1 100%;
+  }
+
+  .audio-buttons button {
+    flex: 1 1 120px;
+  }
+
+  .archive-player-frame {
+    min-height: 220px;
+  }
+
+  .reader-heading h2 {
+    font-size: 24px;
+  }
+
+  .ayahs {
+    font-size: 25px;
+    line-height: 2.2;
+  }
 }
 
-.layout {
-grid-template-columns: 1fr;
+@media (max-width: 380px) {
+  header .logo {
+    font-size: 36px;
+  }
+
+  header > div:nth-child(2) {
+    font-size: 23px !important;
+  }
+
+  .panel {
+    padding: 12px;
+  }
+
+  .page-toolbar .page-jump {
+    gap: 5px;
+  }
+
+  .page-toolbar input {
+    width: 62px;
+  }
+
+  .surah-meta {
+    font-size: 10px;
+  }
 }
 
-.surah-list {
-max-height: 330px;
+/* ===== QURAA HEADER CENTERING FIX ===== */
+header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+  padding-left: 14px !important;
+  padding-right: 14px !important;
 }
-
-.controls {
-grid-template-columns: 1fr;
-}
-
-.panel {
-padding: 14px;
-}
-}
-
-/* قارئ صفحات مصحف المدينة */
-.mushaf-panel { text-align:center; }
-.page-toolbar { display:grid; grid-template-columns:1fr auto 1fr; gap:10px; align-items:center; margin-bottom:12px; }
-.page-toolbar .page-jump { display:flex; align-items:center; gap:7px; justify-content:center; }
-.page-toolbar input { width:86px; text-align:center; }
-.page-frame { background:#f8f4e9; border:1px solid rgba(216,182,106,.75); border-radius:12px; padding:8px; max-width:620px; margin:0 auto; box-shadow:0 8px 24px rgba(0,0,0,.22); }
-#pageImage { display:block; width:100%; height:auto; min-height:220px; object-fit:contain; border-radius:5px; }
-.page-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-.page-actions button { flex:1; min-width:130px; }
-.page-caption { color:var(--muted); line-height:1.9; margin-top:10px; font-size:14px; }
-@media(max-width:520px) { .page-toolbar { grid-template-columns:1fr 1fr; } .page-toolbar .page-jump { grid-column:1 / -1; grid-row:1; } .page-toolbar button { min-width:0; } }
-
-/* عرض صورة المصحف فقط؛ إخفاء قائمة الآيات النصية المكررة حتى لا يظن القارئ أنها صفحة المصحف */
-.layout .panel:nth-child(2) {
+header .logo,
+header .subtitle,
+header > div {
   display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
 }
-.mushaf-panel { scroll-margin-top: 12px; }
-
-.archive-player-frame { width:100%; min-height:180px; border:1px solid var(--gold); border-radius:14px; background:#fff; }
-#archiveRecitationWrap[hidden], audio[hidden], .audio-buttons[hidden] { display:none !important; }
-.archive-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
-.archive-link { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; background:var(--gold); color:#123b2d; padding:11px 16px; border-radius:10px; font-weight:700; }
-@media (max-width:600px) { .archive-player-frame { min-height:220px; } }
-
+@media (max-width: 720px) {
+  header { padding-left: 10px !important; padding-right: 10px !important; }
+  header .logo { font-size: clamp(36px, 10vw, 42px) !important; }
+}
 </style>  </head>  <body>  <header>
 
   <div class="logo">QURAA</div>    
-  <div style="color:var(--gold);font-size:23px;margin-top:5px">قُرّاء</div>    
-  <div class="subtitle">رفيقك في تلاوة القرآن الكريم</div>    
+  <div style="color:var(--gold);font-size:23px;margin-top:5px">�1�6�1�9�1�9�1�1�1�9�1�3</div>    
+  <div class="subtitle">�1�9�1�5�1�4�1�6�1�7 �1�5�1�4 �1�2�1�8�1�9�1�2�1�1 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9</div>    
 </header>  <main class="container">    <section class="panel">    
-    <h2>🎧 الاستماع إلى القرآن الكريم</h2>  <div class="controls">    
+    <h2>�9�5 �1�9�1�8�1�9�1�1�1�2�1�9�1�9�1�7 �1�7�1�8�1�3 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9</h2>  <div class="controls">    
   <div>    
-    <label for="readerSelect" class="status">اختر القارئ</label>    
+    <label for="readerSelect" class="status">�1�9�1�6�1�2�1�9 �1�9�1�8�1�6�1�9�1�9�1�8</label>    
     <select id="readerSelect">    
-      <option value="ar.alafasy">مشاري العفاسي</option>    
-      <option value="ar.abdurrahmaansudais">عبدالرحمن السديس</option>    
-      <option value="ar.husary">محمود خليل الحصري</option>    
-      <option value="ar.minshawi">محمد صديق المنشاوي</option>    
-      <option value="archive:khatma">مشاري العفاسي — الختمة المرتلة من كاليفورنيا 1430 هـ</option>    
-      <option value="archive:rokya">الرقية الشرعية — الشيخ محمد جبريل</option>    
+      <option value="ar.alafasy">�1�9�1�2�1�9�1�9�1�4 �1�9�1�8�1�7�1�5�1�9�1�1�1�4</option>    
+      <option value="ar.abdurrahmaansudais">�1�7�1�0�1�7�1�9�1�8�1�9�1�5�1�9�1�0 �1�9�1�8�1�1�1�7�1�4�1�1</option>    
+      <option value="ar.husary">�1�9�1�5�1�9�1�2�1�7 �1�6�1�8�1�4�1�8 �1�9�1�8�1�5�1�3�1�9�1�4</option>    
+      <option value="ar.minshawi">�1�9�1�5�1�9�1�7 �1�3�1�7�1�4�1�6 �1�9�1�8�1�9�1�0�1�2�1�9�1�2�1�4</option>    
+      <option value="archive:khatma">�1�9�1�2�1�9�1�9�1�4 �1�9�1�8�1�7�1�5�1�9�1�1�1�4 �� �1�9�1�8�1�6�1�2�1�9�1�1 �1�9�1�8�1�9�1�9�1�2�1�8�1�1 �1�9�1�0 �1�7�1�9�1�8�1�4�1�5�1�2�1�9�1�0�1�4�1�9 1430 �1�1�1�4</option>    
+      <option value="archive:rokya">�1�9�1�8�1�9�1�6�1�4�1�1 �1�9�1�8�1�2�1�9�1�7�1�4�1�1 �� �1�9�1�8�1�2�1�4�1�6 �1�9�1�5�1�9�1�7 �1�4�1�0�1�9�1�4�1�8</option>    
     </select>    
   </div>      <div>    
-    <label for="surahSelect" class="status">اختر السورة</label>    
+    <label for="surahSelect" class="status">�1�9�1�6�1�2�1�9 �1�9�1�8�1�1�1�2�1�9�1�1</label>    
     <select id="surahSelect" disabled>    
-      <option value="">جاري تحميل السور...</option>    
+      <option value="">�1�4�1�9�1�9�1�4 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�1�1�2�1�9...</option>    
     </select>    
   </div>    
 </div>    <div class="audio-buttons">    
-  <button id="playButton" type="button" disabled>▶ تشغيل السورة</button>    
-  <button id="pauseButton" type="button">⏸ إيقاف مؤقت</button>    
-  <button id="restartButton" type="button" disabled>↺ إعادة من البداية</button>    
+  <button id="playButton" type="button" disabled>�7�4 �1�2�1�2�1�8�1�4�1�8 �1�9�1�8�1�1�1�2�1�9�1�1</button>    
+  <button id="pauseButton" type="button">�7�2 �1�7�1�4�1�6�1�9�1�5 �1�9�1�6�1�6�1�2</button>    
+  <button id="restartButton" type="button" disabled>�6�6 �1�7�1�7�1�9�1�7�1�1 �1�9�1�0 �1�9�1�8�1�0�1�7�1�9�1�4�1�1</button>    
 </div>    <audio id="audioPlayer" controls preload="none"></audio>
 
 <div id="archiveRecitationWrap" hidden>    
   <iframe id="archiveRecitationPlayer" class="archive-player-frame"    
-    src="about:blank" title="مشغل التلاوة المختارة من Internet Archive"    
+    src="about:blank" title="�1�9�1�2�1�8�1�8 �1�9�1�8�1�2�1�8�1�9�1�2�1�1 �1�9�1�8�1�9�1�6�1�2�1�9�1�9�1�1 �1�9�1�0 Internet Archive"    
     loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>    
   <div class="archive-actions">    
-    <a id="archiveRecitationLink" class="archive-link" href="https://archive.org/details/Khatma1430California" target="_blank" rel="noopener noreferrer">فتح التسجيل الأصلي ↗</a>    
+    <a id="archiveRecitationLink" class="archive-link" href="https://archive.org/details/Khatma1430California" target="_blank" rel="noopener noreferrer">�1�5�1�2�1�5 �1�9�1�8�1�2�1�1�1�4�1�4�1�8 �1�9�1�8�1�5�1�3�1�8�1�4 �J</a>    
   </div>    
 </div>    
 <div id="audioStatus" class="status" aria-live="polite">    
-  جاري تجهيز مشغل القرآن الكريم...    
+  �1�4�1�9�1�9�1�4 �1�2�1�4�1�1�1�4�1�0 �1�9�1�2�1�8�1�8 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9...    
 </div>    </section>    <section class="panel mushaf-panel" aria-labelledby="mushafTitle">    
-    <h2 id="mushafTitle">📖 المصحف الشريف — صورة الصفحة الأصلية (٦٠٤ صفحة)</h2>    
+    <h2 id="mushafTitle">�9�8 �1�9�1�8�1�9�1�3�1�5�1�5 �1�9�1�8�1�2�1�9�1�4�1�5 �� �1�3�1�2�1�9�1�1 �1�9�1�8�1�3�1�5�1�5�1�1 �1�9�1�8�1�5�1�3�1�8�1�4�1�1 (�1�2�1�6�1�0 �1�3�1�5�1�5�1�1)</h2>    
     <div class="page-toolbar">    
-      <button id="prevPageButton" type="button">→ الصفحة السابقة</button>    
+      <button id="prevPageButton" type="button">�� �1�9�1�8�1�3�1�5�1�5�1�1 �1�9�1�8�1�1�1�9�1�0�1�6�1�1</button>    
       <div class="page-jump">    
-        <label for="pageNumberInput">الصفحة</label>    
-        <input id="pageNumberInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="رقم صفحة المصحف">    
-        <button id="goPageButton" type="button">اذهب</button>    
+        <label for="pageNumberInput">�1�9�1�8�1�3�1�5�1�5�1�1</label>    
+        <input id="pageNumberInput" type="number" min="1" max="604" value="1" inputmode="numeric" aria-label="�1�9�1�6�1�9 �1�3�1�5�1�5�1�1 �1�9�1�8�1�9�1�3�1�5�1�5">    
+        <button id="goPageButton" type="button">�1�9�1�8�1�1�1�0</button>    
       </div>    
-      <button id="nextPageButton" type="button">الصفحة التالية ←</button>    
+      <button id="nextPageButton" type="button">�1�9�1�8�1�3�1�5�1�5�1�1 �1�9�1�8�1�2�1�9�1�8�1�4�1�1 ��</button>    
     </div>    
     <div class="page-frame">    
-      <img id="pageImage" src="https://cdn.myquran.com/img/page/1.png" alt="صفحة ١ من مصحف المدينة المنورة" loading="eager">    
+      <img id="pageImage" src="https://cdn.myquran.com/img/page/1.png" alt="�1�3�1�5�1�5�1�1 �1�7 �1�9�1�0 �1�9�1�3�1�5�1�5 �1�9�1�8�1�9�1�7�1�4�1�0�1�1 �1�9�1�8�1�9�1�0�1�2�1�9�1�1" loading="eager">    
     </div>    
-    <div id="pageCaption" class="page-caption" aria-live="polite">جاري تجهيز صفحات المصحف...</div>    
+    <div id="pageCaption" class="page-caption" aria-live="polite">�1�4�1�9�1�9�1�4 �1�2�1�4�1�1�1�4�1�0 �1�3�1�5�1�5�1�9�1�2 �1�9�1�8�1�9�1�3�1�5�1�5...</div>    
     <div class="page-actions">    
-      <button id="playPageButton" type="button">▶ ابدأ التلاوة من هذه الصفحة</button>    
-      <button id="savePageButton" type="button">🔖 حفظ موضع القراءة</button>    
-      <button id="resumePageButton" type="button">↩ الرجوع لآخر موضع محفوظ</button>    
+      <button id="playPageButton" type="button">�7�4 �1�9�1�0�1�7�1�5 �1�9�1�8�1�2�1�8�1�9�1�2�1�1 �1�9�1�0 �1�1�1�8�1�1 �1�9�1�8�1�3�1�5�1�5�1�1</button>    
+      <button id="savePageButton" type="button">�9�2 �1�5�1�5�1�6 �1�9�1�2�1�4�1�7 �1�9�1�8�1�6�1�9�1�9�1�3�1�1</button>    
+      <button id="resumePageButton" type="button">�6�9 �1�9�1�8�1�9�1�4�1�2�1�7 �1�8�1�4�1�6�1�9 �1�9�1�2�1�4�1�7 �1�9�1�5�1�5�1�2�1�6</button>    
     </div>    
-    <div class="status">هذه صورة صفحة المصحف نفسها. تتغير الصفحة تلقائيًا مع التلاوة عند الانتقال إلى صفحة جديدة. احفظ موضعك للعودة إليه لاحقًا.</div>    
+    <div class="status">�1�1�1�8�1�1 �1�3�1�2�1�9�1�1 �1�3�1�5�1�5�1�1 �1�9�1�8�1�9�1�3�1�5�1�5 �1�0�1�5�1�1�1�1�1�9. �1�2�1�2�1�8�1�4�1�9 �1�9�1�8�1�3�1�5�1�5�1�1 �1�2�1�8�1�6�1�9�1�8�1�4�1�5�1�9 �1�9�1�7 �1�9�1�8�1�2�1�8�1�9�1�2�1�1 �1�7�1�0�1�7 �1�9�1�8�1�9�1�0�1�2�1�6�1�9�1�8 �1�7�1�8�1�3 �1�3�1�5�1�5�1�1 �1�4�1�7�1�4�1�7�1�1. �1�9�1�5�1�5�1�6 �1�9�1�2�1�4�1�7�1�7 �1�8�1�8�1�7�1�2�1�7�1�1 �1�7�1�8�1�4�1�1 �1�8�1�9�1�5�1�6�1�5�1�9.</div>    
   </section>    <div class="layout">  <section class="panel">    
-  <h2>📖 سور القرآن الكريم</h2>    <input
+  <h2>�9�8 �1�1�1�2�1�9 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9</h2>    <input
 id="searchInput"
 type="search"
-placeholder="ابحث عن اسم السورة أو رقمها..."
-aria-label="البحث عن سورة"
+placeholder="�1�9�1�0�1�5�1�3 �1�7�1�0 �1�9�1�1�1�9 �1�9�1�8�1�1�1�2�1�9�1�1 �1�5�1�2 �1�9�1�6�1�9�1�1�1�9..."
+aria-label="�1�9�1�8�1�0�1�5�1�3 �1�7�1�0 �1�1�1�2�1�9�1�1"
 
 > 
 
   <div id="surahList" class="surah-list" style="margin-top:14px">    
-    <div class="empty">جاري تحميل السور...</div>    
+    <div class="empty">�1�4�1�9�1�9�1�4 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�1�1�2�1�9...</div>    
   </div>    
 </section>    <section class="panel">    
   <div class="reader-heading">    
-    <h2 id="currentSurahTitle">القرآن الكريم</h2>    
-    <div id="surahInfo" class="status">اختر سورة للبدء بالقراءة</div>    
+    <h2 id="currentSurahTitle">�1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9</h2>    
+    <div id="surahInfo" class="status">�1�9�1�6�1�2�1�9 �1�1�1�2�1�9�1�1 �1�8�1�8�1�0�1�7�1�3 �1�0�1�9�1�8�1�6�1�9�1�9�1�3�1�1</div>    
   </div>      <div id="quranText" class="ayahs">    
-    <div class="empty">اختر سورة من القائمة لعرض الآيات الكريمة.</div>    
+    <div class="empty">�1�9�1�6�1�2�1�9 �1�1�1�2�1�9�1�1 �1�9�1�0 �1�9�1�8�1�6�1�9�1�8�1�9�1�1 �1�8�1�7�1�9�1�4 �1�9�1�8�1�4�1�4�1�9�1�2 �1�9�1�8�1�7�1�9�1�4�1�9�1�1.</div>    
   </div>    
 </section>    </div>    
 </main>  <footer>    
-  قُرّاء QURAA — اللهم اجعل القرآن الكريم ربيع قلوبنا    
+  �1�6�1�9�1�9�1�1�1�9�1�3 QURAA �� �1�9�1�8�1�8�1�1�1�9 �1�9�1�4�1�7�1�8 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9 �1�9�1�0�1�4�1�7 �1�6�1�8�1�2�1�0�1�0�1�9    
 </footer>  <script>    
 "use strict";    const API = "https://api.alquran.cloud/v1";
 
@@ -397,20 +807,20 @@ const archiveRecitationPlayer = document.getElementById("archiveRecitationPlayer
 const archiveRecitationLink = document.getElementById("archiveRecitationLink");
 let recitationMode = "quran";
 const ruqyaTracks = [
-{ value: "roqia_1", label: "الشريط الأول- دعاء إبطال السحر - الرقية الشرعية لكل شكوى", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_1.mp3" },
-{ value: "roqia_2", label: "الشريط الثانى - حرز عظيم من السحر والشيطان - وعلاج الهم والكرب", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_2.mp3" },
-{ value: "roqia_3", label: "الشريط الثالث - العلاج من السحر والحسد وبعض الأمراض", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_3.mp3" },
-{ value: "roqia_4", label: "الشريط الرابع - الوقاية من الإصابة بالسحر والعين", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_4.mp3" },
-{ value: "roqia_azab_1", label: "آيات الحرق والعذاب - الشريط الأول", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_1.mp3" },
-{ value: "roqia_azab_2", label: "آيات الحرق والعذاب - الشريط الثانى", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_2.mp3" },
-{ value: "roqia_azab_3", label: "آيات الحرق والعذاب - الشريط الثالث", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_3.mp3" },
-{ value: "roqia_azab_4", label: "آيات الحرق والعذاب - الشريط الرابع", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_4.mp3" },
-{ value: "roqia_azab_5", label: "آيات الحرق والعذاب - الشريط الخامس", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_5.mp3" },
-{ value: "roqia_duaa", label: "دعاء الرقية الشرعية", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_doaa.mp3" }
+{ value: "roqia_1", label: "�1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�5�1�2�1�8- �1�7�1�7�1�9�1�3 �1�7�1�0�1�5�1�9�1�8 �1�9�1�8�1�1�1�5�1�9 - �1�9�1�8�1�9�1�6�1�4�1�1 �1�9�1�8�1�2�1�9�1�7�1�4�1�1 �1�8�1�7�1�8 �1�2�1�7�1�2�1�3", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_1.mp3" },
+{ value: "roqia_2", label: "�1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�3�1�9�1�0�1�3 - �1�5�1�9�1�0 �1�7�1�6�1�4�1�9 �1�9�1�0 �1�9�1�8�1�1�1�5�1�9 �1�2�1�9�1�8�1�2�1�4�1�5�1�9�1�0 - �1�2�1�7�1�8�1�9�1�4 �1�9�1�8�1�1�1�9 �1�2�1�9�1�8�1�7�1�9�1�0", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_2.mp3" },
+{ value: "roqia_3", label: "�1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�3�1�9�1�8�1�3 - �1�9�1�8�1�7�1�8�1�9�1�4 �1�9�1�0 �1�9�1�8�1�1�1�5�1�9 �1�2�1�9�1�8�1�5�1�1�1�7 �1�2�1�0�1�7�1�4 �1�9�1�8�1�5�1�9�1�9�1�9�1�4", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_3.mp3" },
+{ value: "roqia_4", label: "�1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�9�1�9�1�0�1�7 - �1�9�1�8�1�2�1�6�1�9�1�4�1�1 �1�9�1�0 �1�9�1�8�1�7�1�3�1�9�1�0�1�1 �1�0�1�9�1�8�1�1�1�5�1�9 �1�2�1�9�1�8�1�7�1�4�1�0", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_4.mp3" },
+{ value: "roqia_azab_1", label: "�1�4�1�4�1�9�1�2 �1�9�1�8�1�5�1�9�1�6 �1�2�1�9�1�8�1�7�1�8�1�9�1�0 - �1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�5�1�2�1�8", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_1.mp3" },
+{ value: "roqia_azab_2", label: "�1�4�1�4�1�9�1�2 �1�9�1�8�1�5�1�9�1�6 �1�2�1�9�1�8�1�7�1�8�1�9�1�0 - �1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�3�1�9�1�0�1�3", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_2.mp3" },
+{ value: "roqia_azab_3", label: "�1�4�1�4�1�9�1�2 �1�9�1�8�1�5�1�9�1�6 �1�2�1�9�1�8�1�7�1�8�1�9�1�0 - �1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�3�1�9�1�8�1�3", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_3.mp3" },
+{ value: "roqia_azab_4", label: "�1�4�1�4�1�9�1�2 �1�9�1�8�1�5�1�9�1�6 �1�2�1�9�1�8�1�7�1�8�1�9�1�0 - �1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�9�1�9�1�0�1�7", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_4.mp3" },
+{ value: "roqia_azab_5", label: "�1�4�1�4�1�9�1�2 �1�9�1�8�1�5�1�9�1�6 �1�2�1�9�1�8�1�7�1�8�1�9�1�0 - �1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�6�1�9�1�9�1�1", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_ayaat_el-azab_5.mp3" },
+{ value: "roqia_duaa", label: "�1�7�1�7�1�9�1�3 �1�9�1�8�1�9�1�6�1�4�1�1 �1�9�1�8�1�2�1�9�1�7�1�4�1�1", url: "https://archive.org/download/rokya-mohamed-jebril/roqia_doaa.mp3" }
 ];
 const KHATMA_BASE = "https://archive.org/download/Khatma1430California/";
 let khatmaTracks = [];
-const KHATMA_DISPLAY_NAME = "مشاري العفاسي — الختمة المرتلة من كاليفورنيا 1430 هـ";
+const KHATMA_DISPLAY_NAME = "�1�9�1�2�1�9�1�9�1�4 �1�9�1�8�1�7�1�5�1�9�1�1�1�4 �� �1�9�1�8�1�6�1�2�1�9�1�1 �1�9�1�8�1�9�1�9�1�2�1�8�1�1 �1�9�1�0 �1�7�1�9�1�8�1�4�1�5�1�2�1�9�1�0�1�4�1�9 1430 �1�1�1�4";
 const audioButtons = document.querySelector(".audio-buttons");
 const audioStatus = document.getElementById("audioStatus");
 const playButton = document.getElementById("playButton");
@@ -450,13 +860,13 @@ async function fetchJSON(url) {
 const response = await fetch(url);
 
 if (!response.ok) {
-throw new Error("تعذر الاتصال بمصدر البيانات. رمز الخطأ: " + response.status);
+throw new Error("�1�2�1�7�1�8�1�9 �1�9�1�8�1�9�1�2�1�3�1�9�1�8 �1�0�1�9�1�3�1�7�1�9 �1�9�1�8�1�0�1�4�1�9�1�0�1�9�1�2. �1�9�1�9�1�0 �1�9�1�8�1�6�1�5�1�5: " + response.status);
 }
 
 const data = await response.json();
 
 if (data.code !== 200) {
-throw new Error(data.status || "تعذر تحميل البيانات.");
+throw new Error(data.status || "�1�2�1�7�1�8�1�9 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�0�1�4�1�9�1�0�1�9�1�2.");
 }
 
 return data.data;
@@ -476,7 +886,7 @@ surahList.replaceChildren();
 if (!filtered.length) {
 const empty = document.createElement("div");
 empty.className = "empty";
-empty.textContent = "لم يتم العثور على سورة بهذا الاسم.";
+empty.textContent = "�1�8�1�9 �1�4�1�2�1�9 �1�9�1�8�1�7�1�3�1�2�1�9 �1�7�1�8�1�3 �1�1�1�2�1�9�1�1 �1�0�1�1�1�8�1�9 �1�9�1�8�1�9�1�1�1�9.";
 surahList.appendChild(empty);
 return;
 }
@@ -500,7 +910,7 @@ name.textContent = surah.name;
 
 const meta = document.createElement("span");    
 meta.className = "surah-meta";    
-meta.textContent = surah.numberOfAyahs + " آية";    
+meta.textContent = surah.numberOfAyahs + " �1�4�1�4�1�1";    
 
 button.append(number, name, meta);    
 button.addEventListener("click", async () => {
@@ -511,7 +921,7 @@ item => item.value === String(surah.number)
 );
 
 if (!track) {  
-  setStatus(audioStatus, "تعذر العثور على ملف السورة في الختمة.", true);  
+  setStatus(audioStatus, "�1�2�1�7�1�8�1�9 �1�9�1�8�1�7�1�3�1�2�1�9 �1�7�1�8�1�3 �1�9�1�8�1�5 �1�9�1�8�1�1�1�2�1�9�1�1 �1�5�1�4 �1�9�1�8�1�6�1�2�1�9�1�1.", true);  
   return;  
 }  
 
@@ -523,7 +933,7 @@ audioPlayer.load();
 
 setStatus(  
   audioStatus,  
-  "الختمة المرتلة — سورة " + surah.name + ". جاري التشغيل..."  
+  "�1�9�1�8�1�6�1�2�1�9�1�1 �1�9�1�8�1�9�1�9�1�2�1�8�1�1 �� �1�1�1�2�1�9�1�1 " + surah.name + ". �1�4�1�9�1�9�1�4 �1�9�1�8�1�2�1�2�1�8�1�4�1�8..."  
 );  
 
 try {  
@@ -531,8 +941,8 @@ try {
 } catch (error) {  
   setStatus(  
     audioStatus,  
-    "تم اختيار سورة " + surah.name +  
-    ". اضغط تشغيل من مشغل الصوت.",  
+    "�1�2�1�9 �1�9�1�6�1�2�1�4�1�9�1�9 �1�1�1�2�1�9�1�1 " + surah.name +  
+    ". �1�9�1�4�1�8�1�5 �1�2�1�2�1�8�1�4�1�8 �1�9�1�0 �1�9�1�2�1�8�1�8 �1�9�1�8�1�3�1�2�1�2.",  
     true  
   );  
 }  
@@ -566,7 +976,7 @@ const page = Math.max(1, Math.min(604, Number(pageNumber) || 1));
 const thisRequest = ++pageRequestNumber;
 currentPage = page;
 pageNumberInput.value = String(page);
-pageImage.alt = "صفحة " + toArabicNumbers(page) + " من مصحف المدينة المنورة";
+pageImage.alt = "�1�3�1�5�1�5�1�1 " + toArabicNumbers(page) + " �1�9�1�0 �1�9�1�3�1�5�1�5 �1�9�1�8�1�9�1�7�1�4�1�0�1�1 �1�9�1�8�1�9�1�0�1�2�1�9�1�1";
 pageImage.src = "https://cdn.myquran.com/img/page/" + page + ".png";
 pageImage.onerror = function () {
 pageImage.onerror = null;
@@ -574,7 +984,7 @@ pageImage.src = "https://raw.githubusercontent.com/akram-seid/quran-hd-images/ma
 };
 prevPageButton.disabled = page <= 1;
 nextPageButton.disabled = page >= 604;
-pageCaption.textContent = "جاري تحميل بيانات الصفحة " + toArabicNumbers(page) + "...";
+pageCaption.textContent = "�1�4�1�9�1�9�1�4 �1�2�1�5�1�9�1�4�1�8 �1�0�1�4�1�9�1�0�1�9�1�2 �1�9�1�8�1�3�1�5�1�5�1�1 " + toArabicNumbers(page) + "...";
 localStorage.setItem("quraaLastPage", String(page));
 lastSavedPage = page;
 try {
@@ -582,7 +992,7 @@ const data = await fetchJSON(API + "/page/" + page + "/quran-uthmani");
 if (thisRequest !== pageRequestNumber) return;
 currentPageAyahs = data.ayahs || [];
 
-// تحديث النص أسفل المصحف بالآيات الموجودة في الصفحة الحالية.
+// �1�2�1�5�1�7�1�4�1�3 �1�9�1�8�1�0�1�3 �1�5�1�1�1�5�1�8 �1�9�1�8�1�9�1�3�1�5�1�5 �1�0�1�9�1�8�1�4�1�4�1�9�1�2 �1�9�1�8�1�9�1�2�1�4�1�2�1�7�1�1 �1�5�1�4 �1�9�1�8�1�3�1�5�1�5�1�1 �1�9�1�8�1�5�1�9�1�8�1�4�1�1.
 if (currentSurah && currentAyahs.length) {
   renderCurrentPageAyahs();
 }
@@ -593,23 +1003,23 @@ if (first && last) {
 const firstName = first.surah && first.surah.name ? first.surah.name : "";
 const lastName = last.surah && last.surah.name ? last.surah.name : "";
 const range = firstName === lastName
-? firstName + " — من الآية " + toArabicNumbers(first.numberInSurah) + " إلى " + toArabicNumbers(last.numberInSurah)
-: firstName + "، الآية " + toArabicNumbers(first.numberInSurah) + " — " + lastName + "، الآية " + toArabicNumbers(last.numberInSurah);
-pageCaption.textContent = "صفحة " + toArabicNumbers(page) + " من ٦٠٤ • " + range;
+? firstName + " �� �1�9�1�0 �1�9�1�8�1�4�1�4�1�1 " + toArabicNumbers(first.numberInSurah) + " �1�7�1�8�1�3 " + toArabicNumbers(last.numberInSurah)
+: firstName + "�1�2 �1�9�1�8�1�4�1�4�1�1 " + toArabicNumbers(first.numberInSurah) + " �� " + lastName + "�1�2 �1�9�1�8�1�4�1�4�1�1 " + toArabicNumbers(last.numberInSurah);
+pageCaption.textContent = "�1�3�1�5�1�5�1�1 " + toArabicNumbers(page) + " �1�9�1�0 �1�2�1�6�1�0 �6�1 " + range;
 } else {
-pageCaption.textContent = "صفحة " + toArabicNumbers(page) + " من ٦٠٤";
+pageCaption.textContent = "�1�3�1�5�1�5�1�1 " + toArabicNumbers(page) + " �1�9�1�0 �1�2�1�6�1�0";
 }
 } catch (error) {
 if (thisRequest !== pageRequestNumber) return;
 currentPageAyahs = [];
-pageCaption.textContent = "تعذر تحميل بيانات الآيات لهذه الصفحة. يمكنك تقليب الصفحات، وتأكد من اتصال الإنترنت.";
+pageCaption.textContent = "�1�2�1�7�1�8�1�9 �1�2�1�5�1�9�1�4�1�8 �1�0�1�4�1�9�1�0�1�9�1�2 �1�9�1�8�1�4�1�4�1�9�1�2 �1�8�1�1�1�8�1�1 �1�9�1�8�1�3�1�5�1�5�1�1. �1�4�1�9�1�7�1�0�1�7 �1�2�1�6�1�8�1�4�1�0 �1�9�1�8�1�3�1�5�1�5�1�9�1�2�1�2 �1�2�1�2�1�5�1�7�1�7 �1�9�1�0 �1�9�1�2�1�3�1�9�1�8 �1�9�1�8�1�7�1�0�1�2�1�9�1�0�1�2.";
 }
 }
 
 function goToPageFromInput() {
 const value = Number(pageNumberInput.value);
 if (!Number.isInteger(value) || value < 1 || value > 604) {
-pageCaption.textContent = "اكتب رقم صفحة صحيحًا من ١ إلى ٦٠٤.";
+pageCaption.textContent = "�1�9�1�7�1�2�1�0 �1�9�1�6�1�9 �1�3�1�5�1�5�1�1 �1�3�1�5�1�4�1�5�1�5�1�9 �1�9�1�0 �1�7 �1�7�1�8�1�3 �1�2�1�6�1�0.";
 pageNumberInput.value = String(currentPage);
 return;
 }
@@ -618,29 +1028,29 @@ loadMushafPage(value);
 
 async function playCurrentPage() {
 if (!currentPageAyahs.length) {
-setStatus(audioStatus, "انتظر حتى يتم تحميل بيانات الصفحة، ثم حاول مرة أخرى.", true);
+setStatus(audioStatus, "�1�9�1�0�1�2�1�6�1�9 �1�5�1�2�1�3 �1�4�1�2�1�9 �1�2�1�5�1�9�1�4�1�8 �1�0�1�4�1�9�1�0�1�9�1�2 �1�9�1�8�1�3�1�5�1�5�1�1�1�2 �1�3�1�9 �1�5�1�9�1�2�1�8 �1�9�1�9�1�1 �1�5�1�6�1�9�1�3.", true);
 return;
 }
 const first = currentPageAyahs[0];
 const surahNumber = first.surah && first.surah.number;
 if (!surahNumber) {
-setStatus(audioStatus, "تعذر تحديد السورة الخاصة بهذه الصفحة.", true);
+setStatus(audioStatus, "�1�2�1�7�1�8�1�9 �1�2�1�5�1�7�1�4�1�7 �1�9�1�8�1�1�1�2�1�9�1�1 �1�9�1�8�1�6�1�9�1�3�1�1 �1�0�1�1�1�8�1�1 �1�9�1�8�1�3�1�5�1�5�1�1.", true);
 return;
 }
 await loadSurah(surahNumber);
 const index = currentAyahs.findIndex(a => a.numberInSurah === first.numberInSurah);
 if (index >= 0) playAyah(index);
-else setStatus(audioStatus, "تعذر تحديد بداية الصفحة داخل السورة.", true);
+else setStatus(audioStatus, "�1�2�1�7�1�8�1�9 �1�2�1�5�1�7�1�4�1�7 �1�0�1�7�1�9�1�4�1�1 �1�9�1�8�1�3�1�5�1�5�1�1 �1�7�1�9�1�6�1�8 �1�9�1�8�1�1�1�2�1�9�1�1.", true);
 }
 
 async function loadSurahs() {
-setStatus(audioStatus, "جاري الاتصال بمصدر بيانات القرآن الكريم...");
+setStatus(audioStatus, "�1�4�1�9�1�9�1�4 �1�9�1�8�1�9�1�2�1�3�1�9�1�8 �1�0�1�9�1�3�1�7�1�9 �1�0�1�4�1�9�1�0�1�9�1�2 �1�9�1�8�1�6�1�9�1�4�1�0 �1�9�1�8�1�7�1�9�1�4�1�9...");
 
 try {
 const data = await fetchJSON(API + "/surah");
 
 if (!Array.isArray(data) || data.length !== 114) {    
-  throw new Error("وصلت بيانات غير مكتملة لقائمة السور.");    
+  throw new Error("�1�2�1�3�1�8�1�2 �1�0�1�4�1�9�1�0�1�9�1�2 �1�8�1�4�1�9 �1�9�1�7�1�2�1�9�1�8�1�1 �1�8�1�6�1�9�1�8�1�9�1�1 �1�9�1�8�1�1�1�2�1�9.");    
 }    
 
 allSurahs = data;    
@@ -657,7 +1067,7 @@ allSurahs.forEach(surah => {
 surahSelect.disabled = false;    
 renderSurahs();    
 
-setStatus(audioStatus, "تم تحميل السور بنجاح. اختر سورة للاستماع.");    
+setStatus(audioStatus, "�1�2�1�9 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�1�1�2�1�9 �1�0�1�0�1�4�1�9�1�5. �1�9�1�6�1�2�1�9 �1�1�1�2�1�9�1�1 �1�8�1�8�1�9�1�1�1�2�1�9�1�9�1�7.");    
 
 loadSurah(1);
 
@@ -668,11 +1078,11 @@ surahList.innerHTML = "";
 const message = document.createElement("div");    
 message.className = "empty";    
 message.textContent =    
-  "تعذر تحميل السور. تأكد من اتصال الإنترنت ثم اضغط زر إعادة المحاولة أدناه.";    
+  "�1�2�1�7�1�8�1�9 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�1�1�2�1�9. �1�2�1�5�1�7�1�7 �1�9�1�0 �1�9�1�2�1�3�1�9�1�8 �1�9�1�8�1�7�1�0�1�2�1�9�1�0�1�2 �1�3�1�9 �1�9�1�4�1�8�1�5 �1�0�1�9 �1�7�1�7�1�9�1�7�1�1 �1�9�1�8�1�9�1�5�1�9�1�2�1�8�1�1 �1�5�1�7�1�0�1�9�1�1.";    
 
 const retry = document.createElement("button");    
 retry.type = "button";    
-retry.textContent = "إعادة المحاولة";    
+retry.textContent = "�1�7�1�7�1�9�1�7�1�1 �1�9�1�8�1�9�1�5�1�9�1�2�1�8�1�1";    
 retry.addEventListener("click", loadSurahs);    
 
 surahList.append(message, retry);    
@@ -680,7 +1090,7 @@ surahSelect.disabled = true;
 
 setStatus(    
   audioStatus,    
-  "حدث خطأ أثناء تحميل قائمة السور: " + error.message,    
+  "�1�5�1�7�1�3 �1�6�1�5�1�5 �1�5�1�3�1�0�1�9�1�3 �1�2�1�5�1�9�1�4�1�8 �1�6�1�9�1�8�1�9�1�1 �1�9�1�8�1�1�1�2�1�9: " + error.message,    
   true    
 );
 
@@ -716,9 +1126,9 @@ async function loadSurah(number, resumeIfPlaying = false) {
 
   surahSelect.value = String(surah.number);
   currentSurahTitle.textContent = surah.name;
-  surahInfo.textContent = "جاري تحميل الآيات...";
+  surahInfo.textContent = "�1�4�1�9�1�9�1�4 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�4�1�4�1�9�1�2...";
   quranText.innerHTML =
-    '<div class="empty">جاري تحميل الآيات الكريمة...</div>';
+    '<div class="empty">�1�4�1�9�1�9�1�4 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�4�1�4�1�9�1�2 �1�9�1�8�1�7�1�9�1�4�1�9�1�1...</div>';
 
   renderSurahs(searchInput.value);
 
@@ -732,22 +1142,22 @@ async function loadSurah(number, resumeIfPlaying = false) {
     currentAyahs = data.ayahs || [];
 
     if (!currentAyahs.length) {
-      throw new Error("لم تصل آيات السورة.");
+      throw new Error("�1�8�1�9 �1�2�1�3�1�8 �1�4�1�4�1�9�1�2 �1�9�1�8�1�1�1�2�1�9�1�1.");
     }
 
     surahInfo.textContent =
-      (surah.revelationType === "Meccan" ? "مكية" : "مدنية") +
-      " • عدد الآيات: " + surah.numberOfAyahs;
+      (surah.revelationType === "Meccan" ? "�1�9�1�7�1�4�1�1" : "�1�9�1�7�1�0�1�4�1�1") +
+      " �6�1 �1�7�1�7�1�7 �1�9�1�8�1�4�1�4�1�9�1�2: " + surah.numberOfAyahs;
 
     playButton.disabled = false;
     restartButton.disabled = false;
 
-    // اعرض آيات الصفحة الحالية فقط.
+    // �1�9�1�7�1�9�1�4 �1�4�1�4�1�9�1�2 �1�9�1�8�1�3�1�5�1�5�1�1 �1�9�1�8�1�5�1�9�1�8�1�4�1�1 �1�5�1�6�1�5.
     renderCurrentPageAyahs();
 
     setStatus(
       audioStatus,
-      "تم تحميل سورة " + surah.name + ". اضغط تشغيل للاستماع."
+      "�1�2�1�9 �1�2�1�5�1�9�1�4�1�8 �1�1�1�2�1�9�1�1 " + surah.name + ". �1�9�1�4�1�8�1�5 �1�2�1�2�1�8�1�4�1�8 �1�8�1�8�1�9�1�1�1�2�1�9�1�9�1�7."
     );
 
     if (resumePlayback) {
@@ -764,11 +1174,11 @@ async function loadSurah(number, resumeIfPlaying = false) {
     const message = document.createElement("div");
     message.className = "empty";
     message.textContent =
-      "تعذر تحميل آيات السورة. تحقق من الإنترنت وحاول مرة أخرى.";
+      "�1�2�1�7�1�8�1�9 �1�2�1�5�1�9�1�4�1�8 �1�4�1�4�1�9�1�2 �1�9�1�8�1�1�1�2�1�9�1�1. �1�2�1�5�1�6�1�6 �1�9�1�0 �1�9�1�8�1�7�1�0�1�2�1�9�1�0�1�2 �1�2�1�5�1�9�1�2�1�8 �1�9�1�9�1�1 �1�5�1�6�1�9�1�3.";
 
     quranText.appendChild(message);
 
-    surahInfo.textContent = "تعذر تحميل السورة";
+    surahInfo.textContent = "�1�2�1�7�1�8�1�9 �1�2�1�5�1�9�1�4�1�8 �1�9�1�8�1�1�1�2�1�9�1�1";
 
     setStatus(audioStatus, error.message, true);
   }
@@ -779,12 +1189,12 @@ function renderCurrentPageAyahs() {
   if (!currentPageAyahs.length || !currentAyahs.length) {
     const message = document.createElement("div");
     message.className = "empty";
-    message.textContent = "جاري تجهيز آيات الصفحة...";
+    message.textContent = "�1�4�1�9�1�9�1�4 �1�2�1�4�1�1�1�4�1�0 �1�4�1�4�1�9�1�2 �1�9�1�8�1�3�1�5�1�5�1�1...";
     quranText.appendChild(message);
     return;
   }
 
-  // استخراج آيات السورة الموجودة في صفحة المصحف الحالية.
+  // �1�9�1�1�1�2�1�6�1�9�1�9�1�4 �1�4�1�4�1�9�1�2 �1�9�1�8�1�1�1�2�1�9�1�1 �1�9�1�8�1�9�1�2�1�4�1�2�1�7�1�1 �1�5�1�4 �1�3�1�5�1�5�1�1 �1�9�1�8�1�9�1�3�1�5�1�5 �1�9�1�8�1�5�1�9�1�8�1�4�1�1.
   const pageAyahs = currentPageAyahs.filter(
     ayah => ayah.surah &&
             currentSurah &&
@@ -795,8 +1205,8 @@ function renderCurrentPageAyahs() {
     const message = document.createElement("div");
     message.className = "empty";
     message.textContent =
-      "لا توجد آيات من سورة " + currentSurah.name +
-      " في الصفحة الحالية من المصحف.";
+      "�1�8�1�9 �1�2�1�2�1�4�1�7 �1�4�1�4�1�9�1�2 �1�9�1�0 �1�1�1�2�1�9�1�1 " + currentSurah.name +
+      " �1�5�1�4 �1�9�1�8�1�3�1�5�1�5�1�1 �1�9�1�8�1�5�1�9�1�8�1�4�1�1 �1�9�1�0 �1�9�1�8�1�9�1�3�1�5�1�5.";
 
     quranText.appendChild(message);
     return;
@@ -821,16 +1231,16 @@ function renderCurrentPageAyahs() {
     const numberSpan = document.createElement("span");
     numberSpan.className = "ayah-number";
     numberSpan.textContent =
-      "۞ " + toArabicNumbers(pageAyah.numberInSurah) + " ";
+      "�1�2 " + toArabicNumbers(pageAyah.numberInSurah) + " ";
 
     quranText.appendChild(numberSpan);
   });
 
-  // الاحتفاظ بتظليل الآية الحالية إن كانت ضمن الصفحة.
+  // �1�9�1�8�1�9�1�5�1�2�1�5�1�9�1�6 �1�0�1�2�1�6�1�8�1�4�1�8 �1�9�1�8�1�4�1�4�1�1 �1�9�1�8�1�5�1�9�1�8�1�4�1�1 �1�7�1�0 �1�7�1�9�1�0�1�2 �1�4�1�9�1�0 �1�9�1�8�1�3�1�5�1�5�1�1.
   markPlaying(currentAyahIndex);
 }
 function toArabicNumbers(value) {
-return String(value).replace(/\d/g, digit => "٠١٢٣٤٥٦٧٨٩"[digit]);
+return String(value).replace(/\d/g, digit => "�1�6�1�7�1�8�1�9�1�0�1�1�1�2�1�3�1�4�1�5"[digit]);
 }
 
 function markPlaying(index) {
@@ -865,8 +1275,8 @@ const reader = readerSelect.value;
 
 setStatus(
 audioStatus,
-"جاري تجهيز الآية " + toArabicNumbers(index + 1) +
-" من سورة " + currentSurah.name + "..."
+"�1�4�1�9�1�9�1�4 �1�2�1�4�1�1�1�4�1�0 �1�9�1�8�1�4�1�4�1�1 " + toArabicNumbers(index + 1) +
+" �1�9�1�0 �1�1�1�2�1�9�1�1 " + currentSurah.name + "..."
 );
 
 try {
@@ -892,7 +1302,7 @@ if (!selectedAyah || !selectedAyah.audio) {
 }    
 
 if (!selectedAyah || !selectedAyah.audio) {    
-  throw new Error("لم يصل رابط صوت لهذه الآية من مصدر التلاوة. جرّب اختيار قارئ آخر أو تحقق من الإنترنت.");    
+  throw new Error("�1�8�1�9 �1�4�1�3�1�8 �1�9�1�9�1�0�1�5 �1�3�1�2�1�2 �1�8�1�1�1�8�1�1 �1�9�1�8�1�4�1�4�1�1 �1�9�1�0 �1�9�1�3�1�7�1�9 �1�9�1�8�1�2�1�8�1�9�1�2�1�1. �1�4�1�9�1�1�1�0 �1�9�1�6�1�2�1�4�1�9�1�9 �1�6�1�9�1�9�1�8 �1�4�1�6�1�9 �1�5�1�2 �1�2�1�5�1�6�1�6 �1�9�1�0 �1�9�1�8�1�7�1�0�1�2�1�9�1�0�1�2.");    
 }    
 
 audioPlayer.src = selectedAyah.audio;    
@@ -902,8 +1312,8 @@ markPlaying(index);
 
 setStatus(    
   audioStatus,    
-  "سورة " + currentSurah.name +    
-  " • الآية " + toArabicNumbers(index + 1)    
+  "�1�1�1�2�1�9�1�1 " + currentSurah.name +    
+  " �6�1 �1�9�1�8�1�4�1�4�1�1 " + toArabicNumbers(index + 1)    
 );    
 
 loadingAudio = false;    
@@ -913,7 +1323,7 @@ try {
 } catch (playError) {    
   setStatus(    
     audioStatus,    
-    "اضغط زر التشغيل داخل مشغل الصوت لبدء التلاوة.",    
+    "�1�9�1�4�1�8�1�5 �1�0�1�9 �1�9�1�8�1�2�1�2�1�8�1�4�1�8 �1�7�1�9�1�6�1�8 �1�9�1�2�1�8�1�8 �1�9�1�8�1�3�1�2�1�2 �1�8�1�0�1�7�1�3 �1�9�1�8�1�2�1�8�1�9�1�2�1�1.",    
     true    
   );    
 }
@@ -926,7 +1336,7 @@ console.error("QURAA audio error:", error);
 
 setStatus(    
   audioStatus,    
-  "تعذر تشغيل التلاوة: " + error.message,    
+  "�1�2�1�7�1�8�1�9 �1�2�1�2�1�8�1�4�1�8 �1�9�1�8�1�2�1�8�1�9�1�2�1�1: " + error.message,    
   true    
 );
 
@@ -935,14 +1345,14 @@ setStatus(
 
 audioPlayer.addEventListener("ended", () => {
 if (recitationMode !== "quran") {
-setStatus(audioStatus, "انتهى ملف التلاوة. يمكنك اختيار سورة أخرى من القائمة.");
+setStatus(audioStatus, "�1�9�1�0�1�2�1�1�1�3 �1�9�1�8�1�5 �1�9�1�8�1�2�1�8�1�9�1�2�1�1. �1�4�1�9�1�7�1�0�1�7 �1�9�1�6�1�2�1�4�1�9�1�9 �1�1�1�2�1�9�1�1 �1�5�1�6�1�9�1�3 �1�9�1�0 �1�9�1�8�1�6�1�9�1�8�1�9�1�1.");
 return;
 }
 if (currentAyahIndex + 1 < currentAyahs.length) {
 playAyah(currentAyahIndex + 1);
 } else {
 markPlaying(-1);
-setStatus(audioStatus, "انتهت تلاوة سورة " + currentSurah.name + ".");
+setStatus(audioStatus, "�1�9�1�0�1�2�1�1�1�2 �1�2�1�8�1�9�1�2�1�1 �1�1�1�2�1�9�1�1 " + currentSurah.name + ".");
 }
 });
 
@@ -950,7 +1360,7 @@ audioPlayer.addEventListener("error", () => {
 if (audioPlayer.currentSrc) {
 setStatus(
 audioStatus,
-"تعذر تشغيل الملف الصوتي. جرّب قارئًا آخر أو تحقق من الإنترنت.",
+"�1�2�1�7�1�8�1�9 �1�2�1�2�1�8�1�4�1�8 �1�9�1�8�1�9�1�8�1�5 �1�9�1�8�1�3�1�2�1�2�1�4. �1�4�1�9�1�1�1�0 �1�6�1�9�1�9�1�8�1�5�1�9 �1�4�1�6�1�9 �1�5�1�2 �1�2�1�5�1�6�1�6 �1�9�1�0 �1�9�1�8�1�7�1�0�1�2�1�9�1�0�1�2.",
 true
 );
 }
@@ -1012,7 +1422,7 @@ audioPlayer.load();
 
 setStatus(  
   audioStatus,  
-  "جاري تشغيل: " + track.label  
+  "�1�4�1�9�1�9�1�4 �1�2�1�2�1�8�1�4�1�8: " + track.label  
 );  
 
 try {  
@@ -1020,8 +1430,8 @@ try {
 } catch (error) {  
   setStatus(  
     audioStatus,  
-    "تم اختيار " + track.label +  
-    ". اضغط ▶ تشغيل في مشغل الصوت أسفل القائمة.",  
+    "�1�2�1�9 �1�9�1�6�1�2�1�4�1�9�1�9 " + track.label +  
+    ". �1�9�1�4�1�8�1�5 �7�4 �1�2�1�2�1�8�1�4�1�8 �1�5�1�4 �1�9�1�2�1�8�1�8 �1�9�1�8�1�3�1�2�1�2 �1�5�1�1�1�5�1�8 �1�9�1�8�1�6�1�9�1�8�1�9�1�1.",  
     true  
   );  
 }  
@@ -1056,7 +1466,7 @@ archiveRecitationWrap.hidden = true;
 audioPlayer.hidden = false;
 audioButtons.hidden = false;
 surahSelect.replaceChildren();
-khatmaTracks = (allSurahs.length ? allSurahs : Array.from({length:114}, (_, i) => ({number:i+1, name:"السورة " + (i+1)}))).map(surah => ({
+khatmaTracks = (allSurahs.length ? allSurahs : Array.from({length:114}, (_, i) => ({number:i+1, name:"�1�9�1�8�1�1�1�2�1�9�1�1 " + (i+1)}))).map(surah => ({
 value: String(surah.number),
 label: surah.number + " - " + surah.name,
 url: KHATMA_BASE + String(surah.number).padStart(3, "0") + ".mp3"
@@ -1071,7 +1481,7 @@ surahSelect.disabled = false;
 surahSelect.value = "1";
 audioPlayer.src = KHATMA_BASE + "001.mp3";
 audioPlayer.load();
-setStatus(audioStatus, KHATMA_DISPLAY_NAME + ". اختر السورة من القائمة وشغّل ملف MP3 الأصلي.");
+setStatus(audioStatus, KHATMA_DISPLAY_NAME + ". �1�9�1�6�1�2�1�9 �1�9�1�8�1�1�1�2�1�9�1�1 �1�9�1�0 �1�9�1�8�1�6�1�9�1�8�1�9�1�1 �1�2�1�2�1�8�1�1�1�8 �1�9�1�8�1�5 MP3 �1�9�1�8�1�5�1�3�1�8�1�4.");
 return;
 }
 
@@ -1102,7 +1512,7 @@ audioPlayer.load();
 
 setStatus(
   audioStatus,
-  "تم تحميل قائمة الرقية الشرعية. اختر الشريط المطلوب من القائمة الثانية."
+  "�1�2�1�9 �1�2�1�5�1�9�1�4�1�8 �1�6�1�9�1�8�1�9�1�1 �1�9�1�8�1�9�1�6�1�4�1�1 �1�9�1�8�1�2�1�9�1�7�1�4�1�1. �1�9�1�6�1�2�1�9 �1�9�1�8�1�2�1�9�1�4�1�5 �1�9�1�8�1�9�1�5�1�8�1�2�1�0 �1�9�1�0 �1�9�1�8�1�6�1�9�1�8�1�9�1�1 �1�9�1�8�1�3�1�9�1�0�1�4�1�1."
 );
 return;
 }
@@ -1137,7 +1547,7 @@ nextPageButton.addEventListener("click", () => loadMushafPage(currentPage + 1));
 goPageButton.addEventListener("click", goToPageFromInput);
 pageNumberInput.addEventListener("keydown", event => { if (event.key === "Enter") goToPageFromInput(); });
 playPageButton.addEventListener("click", playCurrentPage);
-savePageButton.addEventListener("click", () => { savedReadingPage = currentPage; localStorage.setItem("quraaReadingPage", String(currentPage)); pageCaption.textContent = "تم حفظ موضع القراءة: صفحة " + toArabicNumbers(currentPage) + " من ٦٠٤."; });
+savePageButton.addEventListener("click", () => { savedReadingPage = currentPage; localStorage.setItem("quraaReadingPage", String(currentPage)); pageCaption.textContent = "�1�2�1�9 �1�5�1�5�1�6 �1�9�1�2�1�4�1�7 �1�9�1�8�1�6�1�9�1�9�1�3�1�1: �1�3�1�5�1�5�1�1 " + toArabicNumbers(currentPage) + " �1�9�1�0 �1�2�1�6�1�0."; });
 resumePageButton.addEventListener("click", () => loadMushafPage(savedReadingPage || 1));
 loadMushafPage(lastSavedPage);
 loadSurahs();
