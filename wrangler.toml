@@ -1,0 +1,8 @@
+name = "quraa-api"
+main = "worker.js"
+compatibility_date = "2026-10-21"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "quraa-db"
+database_id = "0c39b4f8-5101-4912-b323-92560e26932c"
