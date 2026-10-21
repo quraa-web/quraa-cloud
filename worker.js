@@ -51,6 +51,7 @@ function makeId() {
 
 export default {
   async fetch(request, env) {
+    // التعامل مع طلبات CORS
     if (request.method === "OPTIONS") {
       return new Response(null, {
         status: 204,
@@ -58,6 +59,24 @@ export default {
       });
     }
 
+    const url = new URL(request.url);
+    const path = url.pathname.replace(/\/+$/, "") || "/";
+    const method = request.method;
+
+    // عرض ملفات الموقع من مجلد public
+    // مع إبقاء طلبات API تحت تحكم الكود الحالي.
+    if (!path.startsWith("/api/")) {
+      if (env.ASSETS) {
+        return env.ASSETS.fetch(request);
+      }
+
+      return response({
+        ok: false,
+        error: "ملفات الموقع غير مربوطة. راجع إعداد ASSETS في wrangler.toml."
+      }, 500);
+    }
+
+    // التحقق من ربط قاعدة البيانات لطلبات API فقط
     if (!env.DB) {
       return response({
         ok: false,
@@ -68,10 +87,7 @@ export default {
     try {
       await ensureSchema(env.DB);
 
-      const url = new URL(request.url);
-      const path = url.pathname.replace(/\/+$/, "") || "/";
-      const method = request.method;
-
+      // فحص حالة الخدمة
       if (path === "/api/health" && method === "GET") {
         return response({
           ok: true,
@@ -80,6 +96,7 @@ export default {
         });
       }
 
+      // جلب القراء
       if (path === "/api/readers" && method === "GET") {
         const result = await env.DB.prepare(
           "SELECT * FROM readers ORDER BY name"
@@ -91,6 +108,7 @@ export default {
         });
       }
 
+      // جلب التلاوات مع أسماء القراء
       if (path === "/api/recitations" && method === "GET") {
         const result = await env.DB.prepare(`
           SELECT recitations.*, readers.name AS reader_name
@@ -105,14 +123,7 @@ export default {
         });
       }
 
-      if (!path.startsWith("/api/")) {
-        return response({
-          ok: true,
-          service: "QURAA API",
-          message: "واجهة برمجة موقع قُرّاء تعمل."
-        });
-      }
-
+      // التحقق من صلاحية الإدارة
       if (!isAuthorized(request, env)) {
         return response({
           ok: false,
@@ -120,6 +131,7 @@ export default {
         }, env.ADMIN_TOKEN ? 401 : 503);
       }
 
+      // إضافة قارئ
       if (path === "/api/readers" && method === "POST") {
         const body = await request.json();
 
@@ -149,8 +161,11 @@ export default {
         }, 201);
       }
 
+      // تعديل قارئ أو حذفه
       if (path.startsWith("/api/readers/")) {
-        const id = decodeURIComponent(path.slice("/api/readers/".length));
+        const id = decodeURIComponent(
+          path.slice("/api/readers/".length)
+        );
 
         if (method === "DELETE") {
           await env.DB.prepare(
@@ -195,9 +210,12 @@ export default {
         }
       }
 
+      // استيراد مجموعة تلاوات
       if (path === "/api/recitations/bulk" && method === "POST") {
         const body = await request.json();
-        const items = Array.isArray(body) ? body : body.recitations;
+        const items = Array.isArray(body)
+          ? body
+          : body.recitations;
 
         if (!Array.isArray(items) || items.length === 0) {
           return response({
@@ -254,6 +272,7 @@ export default {
         });
       }
 
+      // إضافة تلاوة
       if (path === "/api/recitations" && method === "POST") {
         const body = await request.json();
 
@@ -286,6 +305,7 @@ export default {
         }, 201);
       }
 
+      // تعديل تلاوة أو حذفها
       if (path.startsWith("/api/recitations/")) {
         const id = decodeURIComponent(
           path.slice("/api/recitations/".length)
