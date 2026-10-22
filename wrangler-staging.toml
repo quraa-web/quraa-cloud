@@ -1,0 +1,8 @@
+name = "quraa-api-staging"
+main = "worker-staging.js"
+compatibility_date = "2026-10-21"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "quraa-staging-db"
+database_id = "d47356f6-f53e-49de-91f4-986827edec1e"
