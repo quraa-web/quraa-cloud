@@ -1,0 +1,22 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#073b2b"><title>الدخول والاتصال | قُرّاء</title><style>
+:root{--g:#073b2b;--g2:#0d513b;--gold:#d8b66a;--cream:#f8f4e9;--ink:#20342c;--line:#dce5df;--red:#a52c2c}
+*{box-sizing:border-box}body{margin:0;background:#f4f7f4;color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.6}
+header{background:linear-gradient(120deg,var(--g),var(--g2));color:white;padding:18px 16px;border-bottom:4px solid var(--gold)}
+header h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#e8dfc4;font-size:13px}
+nav{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav a{color:var(--g);text-decoration:none;padding:7px 10px;border:1px solid var(--line);border-radius:10px;font-size:13px}nav a:hover,nav a.active{background:var(--g);color:white}
+main{max-width:1100px;margin:18px auto;padding:0 14px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;margin-bottom:14px;box-shadow:0 4px 18px #0b33220b}
+h2{margin:0 0 12px;color:var(--g);font-size:20px}h3{margin:0 0 10px;color:var(--g)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.field{flex:1;min-width:190px;margin-bottom:10px}label{display:block;font-size:13px;margin-bottom:4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd8d0;border-radius:9px;background:white;font:inherit}textarea{min-height:130px;direction:ltr;text-align:left}
+button,.btn{border:0;border-radius:9px;padding:9px 13px;background:var(--g);color:white;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#eaf1ec;color:var(--g)}button.danger{background:var(--red)}button:disabled{opacity:.5;cursor:not-allowed}
+.notice{padding:10px 12px;background:#edf4ee;border-right:4px solid var(--g2);border-radius:8px;margin:10px 0}.warn{background:#fff4df;border-color:#c48c25}.error{background:#fff0ef;border-color:var(--red)}
+.small{font-size:12px;color:#5c7065}.status{font-size:13px;margin:8px 0}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:680px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:right;font-size:13px;vertical-align:top}th{background:#f1f6f2;color:var(--g)}td input{min-width:130px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.stat{font-size:25px;color:var(--g);font-weight:bold}
+footer{text-align:center;color:#738078;padding:20px;font-size:12px}
+</style></head><body><header><h1>قُرّاء | لوحة الإدارة التجريبية</h1><p>الدخول والاتصال — بيئة اختبار منفصلة، لا تنشر التغييرات إلى الموقع تلقائيًا.</p></header><nav id="nav"></nav><main>
+<section class="card"><h2>بدء جلسة الإدارة</h2><div class="notice warn">هذه اللوحة لا تخزن رمز الإدارة داخل الملف. أدخل رمزًا مضبوطًا كـ Secret على Worker الاختبار. لا تستخدم رمز الإنتاج أثناء التجارب إن أمكن.</div><div class="field"><label>عنوان API</label><input id="api" dir="ltr" value="https://quraa-api-staging.quraaweb.workers.dev"></div><div class="field"><label>رمز الإدارة (Bearer token)</label><input id="key" type="password" autocomplete="current-password" dir="ltr"></div><div class="row"><button id="connect">اختبار الاتصال وبدء الجلسة</button><a class="btn secondary" href="dashboard.html">فتح اللوحة</a></div><div id="status" class="notice">لن يتم حفظ الرمز إلا في sessionStorage لهذه الجلسة.</div></section>
+</main><footer>QURAA Staging · لا تضع رمز الإدارة داخل الملفات أو المستودع.</footer><script src="admin-common.js"></script><script>
+Q('#api').value=localStorage.getItem('quraa_admin_api')||API_DEFAULT;
+Q('#connect').onclick=async()=>{try{localStorage.setItem('quraa_admin_api',Q('#api').value.trim().replace(/\/+$/,''));sessionStorage.setItem('quraa_admin_token',Q('#key').value.trim());await api('/api/health');await api('/api/activity');msg('الاتصال ناجح. تم حفظ الرمز في جلسة المتصفح فقط.');setTimeout(()=>location.href='dashboard.html',700);}catch(e){sessionStorage.removeItem('quraa_admin_token');msg('فشل الاتصال: '+e.message,'error');}};
+</script></body></html>
