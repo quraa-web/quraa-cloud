@@ -90,6 +90,7 @@ export default {
     try {
       await ensureSchema(env.DB);
 
+      // فحص اتصال خدمة API وقاعدة بيانات الاختبار.
       if (path === "/api/health" && method === "GET") {
         return response({
           ok: true,
@@ -98,6 +99,29 @@ export default {
         });
       }
 
+      // NEW: التحقق من رمز الإدارة قبل بدء جلسة الإدارة.
+      if (path === "/api/auth/check" && method === "GET") {
+        if (!env.ADMIN_TOKEN) {
+          return response({
+            ok: false,
+            error: "رمز الإدارة غير مضبوط على Worker الاختبار."
+          }, 503);
+        }
+
+        if (!isAuthorized(request, env)) {
+          return response({
+            ok: false,
+            error: "رمز الإدارة غير صحيح."
+          }, 401);
+        }
+
+        return response({
+          ok: true,
+          message: "تم التحقق من صلاحيات الإدارة."
+        });
+      }
+
+      // جلب قائمة القراء.
       if (path === "/api/readers" && method === "GET") {
         const result = await env.DB.prepare(
           "SELECT * FROM readers ORDER BY name"
@@ -109,6 +133,7 @@ export default {
         });
       }
 
+      // جلب قائمة التلاوات مع أسماء القراء.
       if (path === "/api/recitations" && method === "GET") {
         const result = await env.DB.prepare(`
           SELECT recitations.*, readers.name AS reader_name
@@ -123,6 +148,7 @@ export default {
         });
       }
 
+      // حماية العمليات الإدارية التي تأتي بعد هذا الموضع.
       if (!isAuthorized(request, env)) {
         return response({
           ok: false,
@@ -130,6 +156,7 @@ export default {
         }, env.ADMIN_TOKEN ? 401 : 503);
       }
 
+      // إضافة قارئ.
       if (path === "/api/readers" && method === "POST") {
         const body = await request.json();
 
@@ -159,6 +186,7 @@ export default {
         }, 201);
       }
 
+      // تعديل قارئ أو حذفه.
       if (path.startsWith("/api/readers/")) {
         const id = decodeURIComponent(
           path.slice("/api/readers/".length)
@@ -207,6 +235,7 @@ export default {
         }
       }
 
+      // استيراد مجموعة تلاوات دفعة واحدة.
       if (path === "/api/recitations/bulk" && method === "POST") {
         const body = await request.json();
         const items = Array.isArray(body) ? body : body.recitations;
@@ -266,6 +295,7 @@ export default {
         });
       }
 
+      // إضافة تلاوة واحدة.
       if (path === "/api/recitations" && method === "POST") {
         const body = await request.json();
 
@@ -298,6 +328,7 @@ export default {
         }, 201);
       }
 
+      // تعديل تلاوة أو حذفها.
       if (path.startsWith("/api/recitations/")) {
         const id = decodeURIComponent(
           path.slice("/api/recitations/".length)
@@ -348,6 +379,7 @@ export default {
         }
       }
 
+      // أي مسار أو طريقة طلب غير معروفة.
       return response({
         ok: false,
         error: "المسار أو طريقة الطلب غير مدعومين."
@@ -363,4 +395,5 @@ export default {
     }
   }
 };
+
 // Trigger Cloudflare staging build
