@@ -1,22 +1,437 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#073b2b"><title>الدخول والاتصال | قُرّاء</title><style>
-:root{--g:#073b2b;--g2:#0d513b;--gold:#d8b66a;--cream:#f8f4e9;--ink:#20342c;--line:#dce5df;--red:#a52c2c}
-*{box-sizing:border-box}body{margin:0;background:#f4f7f4;color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.6}
-header{background:linear-gradient(120deg,var(--g),var(--g2));color:white;padding:18px 16px;border-bottom:4px solid var(--gold)}
-header h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#e8dfc4;font-size:13px}
-nav{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
-nav a{color:var(--g);text-decoration:none;padding:7px 10px;border:1px solid var(--line);border-radius:10px;font-size:13px}nav a:hover,nav a.active{background:var(--g);color:white}
-main{max-width:1100px;margin:18px auto;padding:0 14px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;margin-bottom:14px;box-shadow:0 4px 18px #0b33220b}
-h2{margin:0 0 12px;color:var(--g);font-size:20px}h3{margin:0 0 10px;color:var(--g)}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.field{flex:1;min-width:190px;margin-bottom:10px}label{display:block;font-size:13px;margin-bottom:4px}
-input,select,textarea{width:100%;padding:10px;border:1px solid #cbd8d0;border-radius:9px;background:white;font:inherit}textarea{min-height:130px;direction:ltr;text-align:left}
-button,.btn{border:0;border-radius:9px;padding:9px 13px;background:var(--g);color:white;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#eaf1ec;color:var(--g)}button.danger{background:var(--red)}button:disabled{opacity:.5;cursor:not-allowed}
-.notice{padding:10px 12px;background:#edf4ee;border-right:4px solid var(--g2);border-radius:8px;margin:10px 0}.warn{background:#fff4df;border-color:#c48c25}.error{background:#fff0ef;border-color:var(--red)}
-.small{font-size:12px;color:#5c7065}.status{font-size:13px;margin:8px 0}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:680px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:right;font-size:13px;vertical-align:top}th{background:#f1f6f2;color:var(--g)}td input{min-width:130px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.stat{font-size:25px;color:var(--g);font-weight:bold}
-footer{text-align:center;color:#738078;padding:20px;font-size:12px}
-</style></head><body><header><h1>قُرّاء | لوحة الإدارة التجريبية</h1><p>الدخول والاتصال — بيئة اختبار منفصلة، لا تنشر التغييرات إلى الموقع تلقائيًا.</p></header><nav id="nav"></nav><main>
-<section class="card"><h2>بدء جلسة الإدارة</h2><div class="notice warn">هذه اللوحة لا تخزن رمز الإدارة داخل الملف. أدخل رمزًا مضبوطًا كـ Secret على Worker الاختبار. لا تستخدم رمز الإنتاج أثناء التجارب إن أمكن.</div><div class="field"><label>عنوان API</label><input id="api" dir="ltr" value="https://quraa-api-staging.quraaweb.workers.dev"></div><div class="field"><label>رمز الإدارة (Bearer token)</label><input id="key" type="password" autocomplete="current-password" dir="ltr"></div><div class="row"><button id="connect">اختبار الاتصال وبدء الجلسة</button><a class="btn secondary" href="dashboard.html">فتح اللوحة</a></div><div id="status" class="notice">لن يتم حفظ الرمز إلا في sessionStorage لهذه الجلسة.</div></section>
-</main><footer>QURAA Staging · لا تضع رمز الإدارة داخل الملفات أو المستودع.</footer><script src="admin-common.js"></script><script>
-Q('#api').value=localStorage.getItem('quraa_admin_api')||API_DEFAULT;
-Q('#connect').onclick=async()=>{try{localStorage.setItem('quraa_admin_api',Q('#api').value.trim().replace(/\/+$/,''));sessionStorage.setItem('quraa_admin_token',Q('#key').value.trim());await api('/api/health');await api('/api/activity');msg('الاتصال ناجح. تم حفظ الرمز في جلسة المتصفح فقط.');setTimeout(()=>location.href='dashboard.html',700);}catch(e){sessionStorage.removeItem('quraa_admin_token');msg('فشل الاتصال: '+e.message,'error');}};
-</script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#073b2b">
+<title>الدخول والاتصال | قُرّاء</title>
+
+<style>
+:root{
+  --g:#073b2b;
+  --g2:#0d513b;
+  --gold:#d8b66a;
+  --cream:#f8f4e9;
+  --ink:#20342c;
+  --line:#dce5df;
+  --red:#a52c2c;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:#f4f7f4;
+  color:var(--ink);
+  font-family:Tahoma,Arial,sans-serif;
+  line-height:1.6;
+}
+
+header{
+  background:linear-gradient(120deg,var(--g),var(--g2));
+  color:white;
+  padding:18px 16px;
+  border-bottom:4px solid var(--gold);
+}
+
+header h1{margin:0;font-size:22px}
+header p{margin:4px 0 0;color:#e8dfc4;font-size:13px}
+
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:12px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+
+nav a{
+  color:var(--g);
+  text-decoration:none;
+  padding:7px 10px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:13px;
+}
+
+nav a:hover,nav a.active{
+  background:var(--g);
+  color:white;
+}
+
+main{
+  max-width:1100px;
+  margin:18px auto;
+  padding:0 14px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:16px;
+  margin-bottom:14px;
+  box-shadow:0 4px 18px #0b33220b;
+}
+
+h2{
+  margin:0 0 12px;
+  color:var(--g);
+  font-size:20px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:end;
+}
+
+.field{
+  flex:1;
+  min-width:190px;
+  margin-bottom:10px;
+}
+
+label{
+  display:block;
+  font-size:13px;
+  margin-bottom:4px;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border:1px solid #cbd8d0;
+  border-radius:9px;
+  background:white;
+  font:inherit;
+}
+
+button,.btn{
+  border:0;
+  border-radius:9px;
+  padding:9px 13px;
+  background:var(--g);
+  color:white;
+  font:inherit;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+
+button.secondary,.btn.secondary{
+  background:#eaf1ec;
+  color:var(--g);
+}
+
+button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.notice{
+  padding:10px 12px;
+  background:#edf4ee;
+  border-right:4px solid var(--g2);
+  border-radius:8px;
+  margin:10px 0;
+  overflow-wrap:anywhere;
+}
+
+.warn{
+  background:#fff4df;
+  border-color:#c48c25;
+}
+
+.error{
+  background:#fff0ef;
+  border-color:var(--red);
+}
+
+.success{
+  background:#eaf7ec;
+  border-color:#268044;
+}
+
+.small{
+  font-size:12px;
+  color:#5c7065;
+}
+
+footer{
+  text-align:center;
+  color:#738078;
+  padding:20px;
+  font-size:12px;
+}
+
+@media(max-width:480px){
+  header h1{font-size:19px}
+  .field{min-width:100%}
+  .row button,.row .btn{width:100%;text-align:center}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>قُرّاء | لوحة الإدارة التجريبية</h1>
+  <p>الدخول والاتصال — بيئة اختبار منفصلة عن الموقع الأساسي.</p>
+</header>
+
+<nav id="nav"></nav>
+
+<main>
+  <section class="card">
+    <h2>بدء جلسة الإدارة</h2>
+
+    <div class="notice warn">
+      هذه لوحة اختبار مستقلة. أدخل رمز الإدارة المخصص لبيئة الاختبار فقط.
+      لا تضع رمز الإدارة داخل ملفات الموقع أو المستودع.
+    </div>
+
+    <div class="field">
+      <label for="api">عنوان API</label>
+      <input
+        id="api"
+        type="url"
+        dir="ltr"
+        autocomplete="url"
+        value="https://quraa-api-staging.quraaweb.workers.dev"
+      >
+    </div>
+
+    <div class="field">
+      <label for="key">رمز الإدارة (Bearer token)</label>
+      <input
+        id="key"
+        type="password"
+        autocomplete="current-password"
+        dir="ltr"
+        placeholder="أدخل رمز إدارة الاختبار"
+      >
+    </div>
+
+    <div class="row">
+      <button id="connect" type="button">
+        اختبار الاتصال وبدء الجلسة
+      </button>
+
+      <a class="btn secondary" href="dashboard.html">
+        فتح اللوحة
+      </a>
+    </div>
+
+    <div id="status" class="notice" role="status" aria-live="polite">
+      أدخل رمز الإدارة واضغط على زر اختبار الاتصال.
+      لن يُحفظ الرمز إلا في جلسة المتصفح الحالية.
+    </div>
+
+    <p class="small">
+      إذا فشل الاتصال، ستظهر رسالة توضح المشكلة بدلًا من الانتقال إلى اللوحة.
+    </p>
+  </section>
+</main>
+
+<footer>
+  QURAA Staging · بيئة الاختبار فقط
+</footer>
+
+<script src="admin-common.js"></script>
+
+<script>
+(function(){
+  'use strict';
+
+  const $ = selector => document.querySelector(selector);
+
+  const apiInput = $('#api');
+  const keyInput = $('#key');
+  const connectButton = $('#connect');
+  const statusBox = $('#status');
+
+  const DEFAULT_API =
+    'https://quraa-api-staging.quraaweb.workers.dev';
+
+  function showStatus(message, type){
+    statusBox.textContent = message;
+    statusBox.className = 'notice';
+
+    if(type === 'error'){
+      statusBox.classList.add('error');
+    }else if(type === 'success'){
+      statusBox.classList.add('success');
+    }else if(type === 'warn'){
+      statusBox.classList.add('warn');
+    }
+  }
+
+  function normalizeApi(value){
+    return String(value || '')
+      .trim()
+      .replace(/\/+$/, '');
+  }
+
+  function validApiAddress(value){
+    try{
+      const parsed = new URL(value);
+
+      return (
+        parsed.protocol === 'https:' &&
+        parsed.hostname.length > 0
+      );
+    }catch{
+      return false;
+    }
+  }
+
+  apiInput.value =
+    localStorage.getItem('quraa_admin_api') || DEFAULT_API;
+
+  connectButton.addEventListener('click', async function(){
+    const apiBase = normalizeApi(apiInput.value);
+    const token = keyInput.value.trim();
+
+    if(!validApiAddress(apiBase)){
+      showStatus(
+        'عنوان API غير صحيح. استخدم عنوان HTTPS صالحًا.',
+        'error'
+      );
+      return;
+    }
+
+    if(!token){
+      showStatus(
+        'أدخل رمز الإدارة المخصص لبيئة الاختبار أولًا.',
+        'error'
+      );
+      keyInput.focus();
+      return;
+    }
+
+    connectButton.disabled = true;
+    connectButton.textContent = 'جارٍ اختبار الاتصال...';
+
+    sessionStorage.removeItem('quraa_admin_token');
+
+    try{
+      localStorage.setItem('quraa_admin_api', apiBase);
+
+      sessionStorage.setItem('quraa_admin_token', token);
+
+      /*
+       * الخطوة الأولى: التأكد من أن خدمة API تعمل.
+       */
+      const healthResponse = await fetch(
+        apiBase + '/api/health',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        }
+      );
+
+      if(!healthResponse.ok){
+        throw new Error(
+          'تعذر الاتصال بالخدمة. رمز الاستجابة: ' +
+          healthResponse.status
+        );
+      }
+
+      const healthData = await healthResponse.json();
+
+      if(healthData.ok !== true){
+        throw new Error(
+          healthData.error || 'فشل اختبار الخدمة.'
+        );
+      }
+
+      /*
+       * الخطوة الثانية: التحقق من رمز الإدارة.
+       *
+       * يجب إضافة المسار GET /api/auth/check إلى
+       * worker-staging.js قبل أن ينجح هذا الاختبار.
+       */
+      const authResponse = await fetch(
+        apiBase + '/api/auth/check',
+        {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + token
+          }
+        }
+      );
+
+      let authData = {};
+
+      try{
+        authData = await authResponse.json();
+      }catch{
+        authData = {};
+      }
+
+      if(!authResponse.ok || authData.ok !== true){
+        if(authResponse.status === 401){
+          throw new Error(
+            'رمز الإدارة غير صحيح. راجع رمز الاختبار.'
+          );
+        }
+
+        if(authResponse.status === 503){
+          throw new Error(
+            'رمز الإدارة غير مضبوط على Worker الاختبار.'
+          );
+        }
+
+        if(authResponse.status === 404){
+          throw new Error(
+            'مسار التحقق غير موجود بعد. يجب تحديث worker-staging.js ونشر نسخة الاختبار أولًا.'
+          );
+        }
+
+        throw new Error(
+          authData.error ||
+          'تعذر التحقق من صلاحيات الإدارة. رمز الاستجابة: ' +
+          authResponse.status
+        );
+      }
+
+      showStatus(
+        'تم الاتصال والتحقق من رمز الإدارة بنجاح. جارٍ فتح لوحة التحكم...',
+        'success'
+      );
+
+      setTimeout(function(){
+        location.href = 'dashboard.html';
+      }, 800);
+
+    }catch(error){
+      sessionStorage.removeItem('quraa_admin_token');
+
+      showStatus(
+        'فشل الاتصال: ' +
+        (error && error.message
+          ? error.message
+          : 'حدث خطأ غير معروف.'),
+        'error'
+      );
+
+    }finally{
+      connectButton.disabled = false;
+      connectButton.textContent =
+        'اختبار الاتصال وبدء الجلسة';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
