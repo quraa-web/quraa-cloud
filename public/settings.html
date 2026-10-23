@@ -1,0 +1,26 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#073b2b"><title>الإعدادات والاتصال | قُرّاء</title><style>
+:root{--g:#073b2b;--g2:#0d513b;--gold:#d8b66a;--cream:#f8f4e9;--ink:#20342c;--line:#dce5df;--red:#a52c2c}
+*{box-sizing:border-box}body{margin:0;background:#f4f7f4;color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.6}
+header{background:linear-gradient(120deg,var(--g),var(--g2));color:white;padding:18px 16px;border-bottom:4px solid var(--gold)}
+header h1{margin:0;font-size:22px}header p{margin:4px 0 0;color:#e8dfc4;font-size:13px}
+nav{display:flex;gap:8px;flex-wrap:wrap;padding:12px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+nav a{color:var(--g);text-decoration:none;padding:7px 10px;border:1px solid var(--line);border-radius:10px;font-size:13px}nav a:hover,nav a.active{background:var(--g);color:white}
+main{max-width:1100px;margin:18px auto;padding:0 14px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;margin-bottom:14px;box-shadow:0 4px 18px #0b33220b}
+h2{margin:0 0 12px;color:var(--g);font-size:20px}h3{margin:0 0 10px;color:var(--g)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:end}.field{flex:1;min-width:190px;margin-bottom:10px}label{display:block;font-size:13px;margin-bottom:4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd8d0;border-radius:9px;background:white;font:inherit}textarea{min-height:130px;direction:ltr;text-align:left}
+button,.btn{border:0;border-radius:9px;padding:9px 13px;background:var(--g);color:white;font:inherit;cursor:pointer;text-decoration:none;display:inline-block}button.secondary,.btn.secondary{background:#eaf1ec;color:var(--g)}button.danger{background:var(--red)}button:disabled{opacity:.5;cursor:not-allowed}
+.notice{padding:10px 12px;background:#edf4ee;border-right:4px solid var(--g2);border-radius:8px;margin:10px 0}.warn{background:#fff4df;border-color:#c48c25}.error{background:#fff0ef;border-color:var(--red)}
+.small{font-size:12px;color:#5c7065}.status{font-size:13px;margin:8px 0}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:680px}th,td{border-bottom:1px solid var(--line);padding:9px;text-align:right;font-size:13px;vertical-align:top}th{background:#f1f6f2;color:var(--g)}td input{min-width:130px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.stat{font-size:25px;color:var(--g);font-weight:bold}
+footer{text-align:center;color:#738078;padding:20px;font-size:12px}
+</style></head><body><header><h1>قُرّاء | لوحة الإدارة التجريبية</h1><p>الإعدادات والاتصال — بيئة اختبار منفصلة، لا تنشر التغييرات إلى الموقع تلقائيًا.</p></header><nav id="nav"></nav><main>
+<section class="card"><h2>إعدادات الموقع العامة</h2><div class="notice warn">لا تخزن أسرارًا أو رموز وصول في إعدادات عامة. هذه القيم تُحفظ في API، لكن واجهة الزوار لا تقرأها تلقائيًا قبل ربطها.</div><div class="field"><label>عنوان الموقع</label><input id="site_title" value="قُرّاء | QURAA"></div><div class="field"><label>وصف الموقع</label><input id="site_description" value="رفيقك في تلاوة القرآن الكريم"></div><div class="field"><label>لون أساسي (HEX)</label><input id="primary_color" value="#073b2b" dir="ltr"></div><div class="field"><label>لون ذهبي (HEX)</label><input id="gold_color" value="#d8b66a" dir="ltr"></div><button id="save">حفظ الإعدادات</button><button id="reload" class="secondary">تحميل الإعدادات الحالية</button><div id="status" class="notice">الإعدادات هنا لا تغير ملف الموقع الأساسي بنفسها.</div></section>
+</main><footer>QURAA Staging · لا تضع رمز الإدارة داخل الملفات أو المستودع.</footer><script src="admin-common.js"></script><script>
+if(initPage('settings')){
+async function render(){const d=await api('/api/settings');const s=d.settings||{};for(const k of ['site_title','site_description','primary_color','gold_color'])if(s[k]!==undefined)Q('#'+k).value=s[k];}
+Q('#reload').onclick=()=>render().then(()=>msg('تم تحميل الإعدادات.')).catch(e=>msg(e.message,'error'));
+Q('#save').onclick=async()=>{try{await api('/api/settings',{method:'PUT',body:JSON.stringify({site_title:Q('#site_title').value,site_description:Q('#site_description').value,primary_color:Q('#primary_color').value,gold_color:Q('#gold_color').value})});msg('تم حفظ الإعدادات في قاعدة البيانات. يلزم ربط واجهة الزوار بها كي تظهر للزوار.');}catch(e){msg(e.message,'error')}};
+render().catch(e=>msg(e.message,'error'));
+}
+</script></body></html>
